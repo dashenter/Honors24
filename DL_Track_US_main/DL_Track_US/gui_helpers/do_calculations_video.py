@@ -44,7 +44,7 @@ from skimage.morphology import skeletonize
 from skimage.transform import resize
 from tensorflow.keras.utils import img_to_array
 
-from DL_Track_US.gui_helpers.do_calculations import contourEdge, sortContours, filter_fascicles
+from gui_helpers.do_calculations import contourEdge, sortContours, filter_fascicles
 
 
 def doCalculationsVideo(

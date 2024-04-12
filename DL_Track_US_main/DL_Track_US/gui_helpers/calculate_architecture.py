@@ -60,12 +60,12 @@ from matplotlib.backends.backend_pdf import PdfPages
 from skimage.transform import resize
 from tensorflow.keras.utils import img_to_array
 
-from DL_Track_US.gui_helpers.calibrate import (
+from gui_helpers.calibrate import (
     calibrateDistanceManually,
     calibrateDistanceStatic,
 )
-from DL_Track_US.gui_helpers.do_calculations import doCalculations
-from DL_Track_US.gui_helpers.manual_tracing import ManualAnalysis
+from gui_helpers.do_calculations import doCalculations
+from gui_helpers.manual_tracing import ManualAnalysis
 
 plt.style.use("ggplot")
 plt.switch_backend("agg")

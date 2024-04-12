@@ -42,7 +42,7 @@ import tkinter as tk
 from threading import Lock, Thread
 from tkinter import E, N, S, StringVar, Tk, W, filedialog, ttk
 
-from DL_Track_US import gui_helpers
+import gui_helpers
 
 matplotlib.use("TkAgg")
 
