@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Output</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        
+        .rectangle {
+            background-color: lightgray;
+        }
+
+        .rectangle-right {
+            position:absolute;
+            right: 0;
+            height: 100%;
+            width: 460px;
+            background-color: #F0F0F0;
+
+        }
+
+        .rectangle-left {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 80px;
+        }
+
+        .rectangle-top {
+            position: absolute;
+            top: 10%;
+            left: 80px;
+            height: 250px;
+            width: 1000px;
+            background-color: #F0F0F0;
+        }
+
+        .rectangle-bottom {
+            position: absolute;
+            bottom: 10%;
+            left: 100px;
+            height: 490px;
+            width: 530px;
+            background-color: #F0F0F0;
+            border-radius: 20px;
+        }
+
+
+        .scan-stats {
+            color: #333;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .scan-stats h3 {
+            color: #1568B2;
+            margin-bottom: 10px;
+        }
+
+        .scan-stats ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scan-stats ul li {
+            margin-bottom: 10px;
+        }
+
+        .scan-stats ul li strong {
+            font-weight: bold;
+        }
+        .image {
+            position: absolute;
+            top: 10%;
+            left: 650px;
+            height: 530px;
+            width: 600px;
+            background-size: cover;
+            background-image: url('{{url_for('static', filename='Figures/img_1.png') }}');
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+        }
+        .scan-stats .scan-image {
+            display: block; /* Makes the image a block element to allow width and height */
+            width: 50%; /* Sets the width of the image to half of its container by default */
+            height: 400px;
+            position: absolute;
+            top: 0; 
+            right: 0;
+        }
+        .title {
+            position: absolute;
+            top: 45px;
+            left: 100px;
+            font-weight: bold;
+            color: #1568B2;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+        }
+
+        .circle {
+            position: absolute;
+            top: 135px;
+            left: 120px;
+            width: 170px;
+            height: 170px;
+            background-color: skyblue;
+            border-radius: 50%;
+        }
+
+
+        .little-circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: lightblue;
+            border-radius: 50%;
+            left: 15px;
+        }
+
+        .little-circle-1 {
+            top: 195px;
+            background-color: skyblue;
+        }
+        .little-circle-2 {
+            top: 260px;
+        }
+        .little-circle-3 {
+            top: 325px;
+        }
+        .little-circle-4 {
+            top: 390px;
+        }
+        .little-circle-5 {
+            top: 455px;
+        }
+
+        .plus-sign {
+            position: absolute;
+            top: 510px;
+            left: 27px;
+            font-size: 50px;
+            color: #1568B2;
+        }
+        .plus-sign::before {
+            content: "+";
+        }
+        .patient-info {
+            position: absolute;
+            top: 150px;
+            left: 300px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Montserrat', sans-serif;
+       }
+
+        .patient-info p {
+            margin: 5px 0;
+        }
+
+        .patient-info strong {
+          color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="rectangle rectangle-left"></div>
+
+    <div class="rectangle rectangle-right"></div>
+
+    <div class="rectangle rectangle-top"></div>
+
+    <div class="rectangle-bottom">
+    <div class="scan-stats">
+        <h3>Scan Stats</h3>
+        <ul>
+            <li><strong>Position:</strong> Left Leg</li>
+            <li><strong>Condition:</strong> Good</li>
+            <li><strong>Stretch:</strong> 7%</li>
+            <li><strong>Strength:</strong> 97%</li>
+            <li><strong>Thickness:</strong> 27mm</li>
+            <li><strong>Penation Angle:</strong> 13</li>
+            <li><strong>Fascicle Length:</strong> 100mm</li>
+        </ul>
+        <img src="{{ url_for('static', filename='Figures/img.png')}}" class="scan-image">
+    </div>
+</div>
+    <div class="image"></div>
+    <div class="title">JULIA MOSS - Patient Dashboard</div>
+    <div class="circle"></div>
+
+    <div class="little-circle little-circle-1"></div>
+    <div class="little-circle little-circle-2"></div>
+    <div class="little-circle little-circle-3"></div>
+    <div class="little-circle little-circle-4"></div>
+    <div class="little-circle little-circle-5"></div>
+    <div class="plus-sign"></div>
+    <div class="patient-info">
+    <p><strong>Patient ID:</strong> 0024</p>
+    <p><strong>Age:</strong> 27</p>
+    <p><strong>Sex:</strong> Female</p>
+    <p><strong>Weight:</strong> 62.3 kg </p>
+    <p><strong>Height:</strong> 169 cm </p>
+    <p><strong>Specialization:</strong> Defensive Midfielder</p>
+    <pre>{{ output }}</pre>
+
+
+</body>
+</html>
