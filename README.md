@@ -100,6 +100,7 @@ The dashboard will be accessible at  http://127.0.0.1:5000. Open this URL in you
 │   ├── index.html           # Main dashboard page
 
 │   └── info.html            # Information page
+└── .gitignore
 
 ## 8. Conclusion
 This README has provided the necessary steps to set up and run the video analysis dashboard. 
