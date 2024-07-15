@@ -1,6 +1,12 @@
-Flask
 numpy
 pandas
-tensorflow
-keras
-
+opencv-python
+matplotlib
+dash
+dash-core-components
+dash-html-components
+scipy
+scikit-image
+tensorflow==2.4.1
+h5py
+flask
