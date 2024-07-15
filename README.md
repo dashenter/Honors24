@@ -47,7 +47,7 @@ Ensure that the models are correctly downloaded.
 
 ## 3. Install Required Libraries
 Install the required libraries using pip. Run the following command in your terminal:
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ## 4. Run the Analysis Script (do_our_calculations)
 To analyze a video, you need to run the do_our_calculations.py script. 
