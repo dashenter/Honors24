@@ -2,7 +2,10 @@
 This project, developed by Health Track Honors students in 2024, in collaboration with Usono, focuses on enhancing ultrasonic imaging through machine learning models. It aims to provide advanced tools and algorithms for improved analysis and interpretation of ultrasound images.
 
 # Features
-Integration of deepMTJ and Paul Rietsche models for advanced muscle and tissue analysis. Flask-based web application for accessibility and ease of use. Adaptability for both mobile and web platforms.
+Integration of [deepMTJ][1] and [Paul Rietsche DL_Track_US][2] models for advanced muscle and tissue analysis. Flask-based web application for accessibility and ease of use. Adaptability for both mobile and web platforms.
+
+[1]: https://github.com/luuleitner/deepMTJ
+[2]: https://github.com/PaulRitsche/DL_Track_US
 
 # Contribution
 As a project under active development, contributions from the medical and tech communities are welcome.
@@ -16,29 +19,31 @@ For more details on the project, contributions, and usage, please refer to the p
 
 Python 3.x
 
-Libraries: Ensure you have the following Python libraries installed: numpy, pandas, opencv-python, matplotlib, dash, dash-core-components, dash-html-components, scipy, skimage, tensorflow, h5py, subprocess, scikit-image.
+Ensure you have the following Python libraries installed: numpy, pandas, opencv-python, matplotlib, dash, dash-core-components, dash-html-components, scipy, skimage, tensorflow, h5py, subprocess, scikit-image.
 
 # Setup Instructions
 ## 1. Clone the Repository
 Clone the repository to your local machine using:
 
-git clone https://github.com/.............git
+`git clone https://github.com/.............git`
 
-cd your-repository-directory
+`cd your-repository-directory`
 
 
 ## 2. Download the Machine Learning Models
 You need to download the machine learning models according to their respective documentation. 
 
-The DL_Track_US package provides an easy to use graphical user interface (GUI) for deep learning based analysis of muscle architectural parameters from longitudinal ultrasonography images of human lower limb muscles. Please take a look at our [documentation](https://dltrack.readthedocs.io/en/latest/index.html) for more information (note that aggressive ad-blockers might break the visualization of the repository description as well as the online documentation).
+The DL_Track_US package provides an easy to use graphical user interface (GUI) for deep learning based analysis of muscle architectural parameters from longitudinal ultrasonography images of human lower limb muscles. Please take a look at our [documentation][3] for more information (note that aggressive ad-blockers might break the visualization of the repository description as well as the online documentation).
 
 Model 1 (US_Track_US): https://dltrack.readthedocs.io/en/latest/index.html
 
-Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section- Download the DL_Track_US executable)
+Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section - Download the DL_Track_US executable)
 
 Model 2: [Model 2 Documentation Link]
 
 Ensure that the models are correctly downloaded.
+
+[3]: https://dltrack.readthedocs.io/en/latest/index.html
 
 ## 3. Install Required Libraries
 Install the required libraries using pip. Run the following command in your terminal:
@@ -52,15 +57,15 @@ Usage:
 Feel free to update the paths based on where you saved and want to save the videos. Keep in mind that the output videos should 
 be saved in the static folder. 
 
---input_video_path: Path to the input video you want to analyze. 
+- input_video_path: Path to the input video you want to analyze. 
 
---output_video_path: Path where you want to save the analyzed video. 
+- output_video_path: Path where you want to save the analyzed video. 
 
---bar_graph_video_path: Path where you want to save the bar graph video.
+- bar_graph_video_path: Path where you want to save the bar graph video.
 
---apo_model_path: Path to the APO model.
+- apo_model_path: Path to the APO model.
 
---fasc_model_path: Path to the FASC model.
+- fasc_model_path: Path to the FASC model.
 
 Follow all the comments made in this file. 
 
@@ -101,7 +106,8 @@ The dashboard will be accessible at  http://127.0.0.1:5000. Open this URL in you
 
 │   └── info.html            # Information page
 
-└── .gitignore```
+└── .gitignore
+```
 
 ## 8. Conclusion
 This README has provided the necessary steps to set up and run the video analysis dashboard. 
