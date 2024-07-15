@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USONO Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/f1d7a99d18.js" crossorigin="anonymous">
+        // JavaScript to update the video source and play the video
+        function playVideo(filename) {
+                var videoPlayer = document.getElementById('videoPlayer');
+                var videoSource = document.getElementById('videoSource');
+                videoSource.src = "{{ url_for('static', filename='') }}" + filename;
+                videoPlayer.load();
+                videoPlayer.play();
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="https://www.usono.com/" target="_blank" class="user-icons"><div class="user-icons">
+                <img src="{{ url_for('static', filename='logo.png') }}" style="width: 50px; height: 20px; margin: 10px;" href="https://www.usono.com/" target="_blank">
+                <span class="user-name">Usono</span>
+            </div> </a>
+            <div class="user-icons">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-house" style="font-size: 26px;"></a><span class="user-name">Home</span></div>
+            </div>
+            <div class="user-icons" onclick="showDashboard()">
+                <div class="user-circle" style="color: #1068b2; border-color: transparent;" onclick="showDashboard()"><b onclick="showDashboard()">LK</b><span class="user-name" onclick="showDashboard()">Lucas Kiewek</span></div>
+                <script>function showDashboard() {
+                    document.getElementById('dashboard-content').style.display = 'block';
+                    document.getElementById('education-content').style.display = 'none';
+                    document.getElementById('databases-content').style.display = 'none';
+                    document.getElementById('community-content').style.display = 'none';
+                    document.getElementById('history-content').classList.remove('hidden');
+                    document.getElementById('dashboard-content').classList.remove('full-width');
+                }</script>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('static/Intersect-opacity-1.png');"><b>SW</b><span class="user-name">Susan Walter</span></div>
+            </div> 
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('static/Intersect-opacity-2.png');"><b>AA</b><span class="user-name">Andrew Amstel</span></div>
+            </div> 
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('static/Intersect-opacity-3.png');"><b>TG</b><span class="user-name">Thijs Groen</span></div>
+            </div> 
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('static/Intersect-opacity-4.png');"><b>AK</b><span class="user-name">Anne Klein</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-plus" style="font-size: 26px;"></a><span class="user-name">Add</span></div>
+            </div>  
+            <div class="user-icons" style="bottom: 0;margin-top: 90px;" onclick="showCommunity()">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-users" style="font-size: 26px;"></a><span class="user-name">Community</span></div>
+            </div> 
+            <script>
+                function showCommunity() {
+                    document.getElementById('dashboard-content').style.display = 'none';
+                    document.getElementById('education-content').style.display = 'none';
+                    document.getElementById('community-content').style.display = 'block';
+                    document.getElementById('databases-content').style.display = 'none';
+                    document.getElementById('history-content').classList.add('hidden');
+                    document.getElementById('community-content').classList.add('full-width');
+                }
+            </script>
+            <div class="user-icons" style="bottom: 0;" onclick="showDatabases()">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-folder-open" style="font-size: 26px;"></a><span class="user-name">Databases</span></div>
+            </div>
+            <script>
+                function showDatabases() {
+                    document.getElementById('dashboard-content').style.display = 'none';
+                    document.getElementById('community-content').style.display = 'none';
+                    document.getElementById('education-content').style.display = 'none';
+                    document.getElementById('databases-content').style.display = 'block';
+                    document.getElementById('history-content').classList.add('hidden');
+                    document.getElementById('education-content').classList.add('hidden');
+                    document.getElementById('databases-content').classList.add('full-width');
+                }
+            </script>
+            <div class="user-icons" style="bottom: 0;" onclick="showEducation()">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-money-check-dollar" style="font-size: 26px;"></a><span class="user-name">Pricing</span></div>
+            </div>
+            <script>
+                function showEducation() {
+                    document.getElementById('dashboard-content').style.display = 'none';
+                    document.getElementById('community-content').style.display = 'none';
+                    document.getElementById('databases-content').style.display = 'none';
+                    document.getElementById('education-content').style.display = 'block';
+                    document.getElementById('history-content').classList.add('hidden');
+                    document.getElementById('education-content').classList.add('full-width');
+                }
+            </script>
+            <div class="user-icons" style="bottom: 0;">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-circle-info" style="font-size: 26px;"></a><span class="user-name">Info</span></div>
+            </div> 
+        </nav>
+
+        <div class="main" id="dashboard-content">
+            <div class="main-top">
+                <div>
+                    <h2 style="color: #1068b2; padding: 10px;">LUCAS KIEWEK<span style="font-weight:normal; color: #1068b2;"> | Patient Dashboard</span></h2>
+                </div>
+                <div style="display: flex; margin-left: 65.5%;">
+                    <a href="#"><i class="fas fa-solid fa-download" style="padding: 5px; margin-top: 10px;"></i></a>
+                    <a href="#"><i class="fas fa-solid fa-upload" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a>
+                    <!-- <button class="button icon-button"><i class="fas fa-solid fa-download" style="padding: 5px; margin-top: 5px;"></i></button>
+                    <button class="button icon-button"><i class="fas fa-solid fa-upload" style="padding: 5px; margin-top: 5px;"></i></button> -->
+                    <button class="button icon-button" style="margin-top: 8px; margin-left: 20%; margin-right: 30px;"><p style="font-size: 16px;">SAVE</p></button>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="user-stats">
+                    <div class="user">
+                        <img src="{{ url_for('static', filename='lucas.png') }}" class="user-img">
+                        <div>
+                            <h3>Patient ID: 0024</h3>
+                            <table style="width: 440px; color: #444444;">
+                                <tr>
+                                    <td>Age: 21</td>
+                                    <td class="data-2">DOB: 14/08/2002</td>
+                                </tr>
+                                <tr>
+                                    <td>Sex: Male</td>
+                                </tr>
+                                <tr>
+                                    <td>Weight: 75.3 kg</td>
+                                    <td class="data-2">last updated: 20/05/2024</td>
+                                </tr>
+                                <tr>
+                                    <td>Height: 183 cm</td>
+                                    <td class="data-2">last updated: 04/06/2024</td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 14px; padding-top: 12px;">Specialty: Defensive midfielder (Football)</p>
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <h3 style="color: #2d82b6;">Scan Stats</h3>
+                        <div style="display: flex;">
+                            <div>
+                                <table style="width: 380px; color: #444444;">
+                                    <tr>
+                                        <td>Position</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>Left Calf</option>
+                                                  <option>Right Calf</option>
+                                                  <option>Left Thigh</option>
+                                                  <option>Right Thigh</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>Gastrocnemius medialis</option>
+                                                  <option>Tibialis anterior</option>
+                                                  <option>Tibialis soleus</option>
+                                                  <option>Vastus lateralis</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fascicle Length</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>12.7cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pennation Angle</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>19.9°</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Thickness</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.15cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Volume</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>19.70cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PCSA</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.55cm<sup>2</sup></option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fascicle CSA</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.22cm<sup>2</sup></option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Force Transmission</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>0.942</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Force</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>46.5N</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Efficiency</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>0.942</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>MQI</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.08cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <img src="{{ url_for('static', filename='muscle.png') }}" style="height: 410px; margin-left: 13%; padding: 0px 20px;">
+                        </div>
+                        <p class="data-2" style="text-align: left; margin-top: 10px;">NOTE: Visualize the target area before starting the scan. Use external markers or indicators to guide the placement of the transducer. Confirm the alignment visually and adjust as needed.</p>
+                        <div class="button-container" style="margin-top: 20px;">
+                            <button class="toggle-button" style="box-shadow: 0px 1px 4px #D0D0D0;" onclick="pauseVideos()">Stop Scanning</button>
+                            <script>
+                                var isScanning = false;
+
+                                function toggleScanning() {
+                                    var videos = document.getElementsByTagName('video');
+                                    var button = document.querySelector('.toggle-button');
+
+                                    if (isScanning) {
+                                        for (var i = 0; i < videos.length; i++) {
+                                            videos[i].pause();
+                                        }
+                                        button.textContent = 'Start Scanning';
+                                    } else {
+                                        for (var i = 0; i < videos.length; i++) {
+                                            videos[i].play();
+                                        }
+                                        button.textContent = 'Stop Scanning';
+                                    }
+
+                                    isScanning = !isScanning;
+                                }
+
+                                var button = document.querySelector('.toggle-button');
+                                button.textContent = 'Start Scanning';
+                                button.onclick = toggleScanning;
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scan">
+                    <div style="position: relative;">
+                        <!-- <video style="border-radius: 15px;" width="100%" controls loop muted id="video-player">
+                            <source id="video-source" src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video> -->
+                        <div class="video-container">
+                            <!--
+                            <video style="border-radius: 15px;" id="videoPlayer" width="100%" max-height="90%" loop muted>
+                                <source id ='videoSource' src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>-->
+                            <video id="vid" autoplay loop muted style="width:100%">
+                                <source id="src" src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                             </video>
+                             <div class="overlay-text" style="bottom: 15px; width: 100%; display: flex; justify-content: space-between;">
+                             <button id="change0" class="button switch-button" style="width: 24%;">Raw Input</button>
+                             <button id="change1" class="button switch-button" style="width: 24%;">Raw Output</button>
+                             <button id="change2" class="button switch-button" style="width: 24%;">Proc Scan</button>
+                             <button id="change3" class="button switch-button" style="width: 24%;">MTJ Scan</button>
+                             <script>
+                                const v = document.getElementById("vid");
+                                const s = document.getElementById("src");
+                                var isPlaying = false;
+                                
+                                function changeVideo0() { 
+                                    
+                                    isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
+                                   s.src = "{{ url_for('static', filename='calf_raise.mp4') }}";
+                                   v.load();
+                                   console.log('loaded...');
+                                   if(!isPlaying){
+                                    v.play();
+                                   } else {
+                                       console.log('playing...');
+                                   }
+                                }
+
+                                function changeVideo1() { 
+                                    isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
+                                   s.src = "{{ url_for('static', filename='output_video.mp4') }}";
+                                   v.load();
+                                
+                                   if(!isPlaying){
+                                    v.play();
+                                   } else {
+                                       console.log('playing...');
+                                   }
+                                }
+                               
+                                function changeVideo2() { 
+                                    isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
+                                    s.src = "{{ url_for('static', filename='calf_raise_proc.mp4') }}";
+                                    v.load();
+                                    if(!isPlaying){
+                                    v.play();
+                                   } else {
+                                       console.log('playing...');
+                                   }
+                                }
+                                function changeVideo3() { 
+                                    isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
+                                    s.src = "{{ url_for('static', filename='calf_deepMTJ.mp4') }}";
+                                    v.load();
+                                    if(!isPlaying){
+                                    v.play();
+                                   } else {
+                                       console.log('playing...');
+                                   }
+                                }
+                                
+                                document.getElementById("change0").onclick=changeVideo0; 
+                                document.getElementById("change1").onclick=changeVideo1;       
+                                document.getElementById("change2").onclick=changeVideo2; 
+                                document.getElementById("change3").onclick=changeVideo3; 
+                               </script>
+                               </div>                               
+                        </div>
+                        <div class="overlay-text" style="bottom: 70px; left: 20px; background-color: rgba(0 0 0 /50%); border-radius: 15px; padding: 10px;">
+                            <i class="fa-regular fa-circle-dot" style="color: #FF6700;"></i>
+                            <span style="font-size: 20px;">LIVE</span>
+                            <p style="font-size: 12px; font-weight: bold;">Scan Settings</p>
+                            <p style="font-size: 12px;">FPS: 81</p>
+                            <p style="font-size: 12px;">Frequency: 5 MHz</p>
+                            <P style="font-size: 12px;">Zoom: 100%</P>
+                        </div>
+                        <div class="overlay-text" style="top: 15px; right: 0;">
+                            <button class="button capture-button">Capture Image</button>
+                        </div>
+                        <!--
+                        <div class="overlay-text" style="bottom: 15px; width: 100%; display: flex; justify-content: space-between;">
+                            <button class="button switch-button" style="width: 32%;" onclick="playVideo('output_video.mp4')">Raw Scan</button>
+                            <button class="button switch-button" style="width: 32%;" onclick="playVideo('calf_raise_proc.mp4')">Proc Scan</button>
+                            <button class="button switch-button" style="width: 32%;" onclick="playVideo('calf_deepMTJ.mp4')">Annotated Scan</button>
+                        </div> -->
+                    </div>
+                    <div style="display: flex;">
+                        <video style="border-radius: 15px;" width="320px" controls loop muted>
+                            <source id ='video-source' src="{{ url_for('static', filename='line_graph_video.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div style="padding: 10px; padding-left: 0; margin: 20px;">
+                            <h4>Gastrocnemius Medialis Strain</h4>
+                            <p>Date of injury: 29/12/2023<p>
+                            <p style="margin: 5px 0px; font-size: 14px;">A moderate-grade strain identified in the gastrocnemius medialis muscle of the left calf, located approximately 7 cm below the popliteal fossa. Clinical examination reveals localized tenderness and swelling over the medial aspect of the calf. Ultrasound imaging confirms the presence of a tear within muscle fibers, extending longitudinally along medial border.</p>
+                            <button class="button">Explore similar cases</button>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+
+        <div class="history" id="history-content" style="background-color: #f0f0f0;">
+            <h2>History</h2>
+            <div class="record" style="min-height: 11.5em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #24</h4></td>
+                        <td><h4 style=" text-align: right;">20/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Calf</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Tibialis ant.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <div class="record" style="min-height: 11.5em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #23</h4></td>
+                        <td><h4 style=" text-align: right;">12/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Calf</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Gastrocnemius med.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <div class="record" style="min-height: 11.5em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #24</h4></td>
+                        <td><h4 style=" text-align: right;">03/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Thigh</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Vastus lat.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <!-- Additional record divs -->
+            <h2>Progress</h2>
+            <video style="border-radius: 15px;" width="100%" controls loop muted>
+                <source src="{{ url_for('static', filename='bar_graph_video.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>            
+            <div class="button-container">
+                <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+            </div>
+        </div>
+
+        <!-- <div class="main" id="education-content" style="display:none;">
+            <img src="{{ url_for('static', filename='education.png') }}" style="width: 100%; height: 100%;">
+        </div> -->
+
+        <!-- <div class="main" id="community-content" style="display:none;">
+            <img src="{{ url_for('static', filename='community.png') }}" style="width: 100%; height: 100%;">
+        </div> -->
+
+        <div id="education-content" style="display: none;">
+            <h1 style="text-align: center; color: #1068b2; margin-top: 40px; margin-bottom: 30px; font-size: 40px;">ULTRAWISE PLANS</h1>
+            <div style="font-weight:normal; color: #1068b2; text-align: center;">
+                <div style="display: flex; justify-content: center;height: 25%; display: flex; align-items: center; margin-left: 20px;">
+                    <h2 style="font-weight: normal;"></h2>
+                </div>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-plan" style="background-color: #f0f0f0;">
+                    <h3>FREEMIUM</h3>
+                    <div class="price" style="margin-bottom: 100px;">
+                        <span class="currency">$</span>
+                        <span class="amount">/MONTH</span>
+                    </div>
+                    <ul style="margin-left: 80px; margin-bottom: 150px;">
+                        <li>Access to forums <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access to community platform <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Can ask questions and share updates <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Chat in groups (open and invite-only) <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access case database <i class="fa-solid fa-xmark" style="float: right; margin-right: 20px; color: black;"></i></li>
+                        <li>Access from multiple machines <i class="fa-solid fa-xmark" style="float: right; margin-right: 20px; color: black;"></i></li>
+                        <li>Access to Ultrawise analytical software <i class="fa-solid fa-xmark" style="float: right; margin-right: 20px; color: black;"></i></li>
+                    </ul>
+
+                    <button class="button icon-button" style="width: 300px; height: 80px; margin: 30px; font-size: 23px; border-radius: 35px; font-weight: normal;">SELECT PLAN</button>
+                </div>
+                <div class="pricing-plan premium" style="background-color: white;">
+                    <h3>PREMIUM</h3>
+                    <div class="price" style="margin-bottom: 100px;">
+                        <span class="currency">$$</span>
+                        <span class="amount">/MONTH</span>
+                    </div>
+                    <ul style="margin-left: 80px; margin-bottom: 150px;">
+                        <li>Access to forums <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access to community platform <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Can ask questions and share updates <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Chat in groups (open and invite-only) <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access case database <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access from multiple machines <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access to Ultrawise analytical software <i class="fa-solid fa-xmark" style="float: right; margin-right: 20px; color: black"></i></li>
+                    </ul>
+                    <button class="button icon-button" style="width: 300px; height: 80px; margin: 30px; font-size: 23px; border-radius: 35px; font-weight: normal;">SELECT PLAN</button>
+                </div>
+                <div class="pricing-plan" style="background-color: #f0f0f0;">
+                    <h3>ULTRAWISE</h3>
+                    <div class="price" style="margin-bottom: 100px;">
+                        <span class="currency">$$$</span>
+                        <span class="amount">/MONTH</span>
+                    </div>
+                    <ul style="margin-left: 80px; margin-bottom: 150px;">
+                        <li>Access to forums <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access to community platform <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Can ask questions and share updates <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Chat in groups (open and invite-only) <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access case database <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access from multiple machines <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                        <li>Access to Ultrawise analytical software <i class="fa-solid fa-check" style="float: right; margin-right: 20px; color: #1068b2;"></i></li>
+                    </ul>
+                    <button class="button icon-button" style="width: 300px; height: 80px; margin: 30px; font-size: 23px; border-radius: 35px; font-weight: normal;">SELECT PLAN</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="databases-content" style="display: none;">
+            <h1 style="text-align: center; color: #1068b2; margin-top: 40px; margin-right: 40px; font-size: 40px;margin-left: -140px;">DATABASE<span style="font-weight:normal; font-size:24px; color: #1068b2; margin-left: 240px; cursor: pointer;" onmouseover="this.style.color='#5bc3be'" onmouseout="this.style.color='#1068b2'">Diagnostic Protocols</span> <span style="font-weight:normal; font-size:24px; color: #1068b2; margin-left: 40px; cursor: pointer;" onmouseover="this.style.color='#5bc3be'" onmouseout="this.style.color='#1068b2'">Rehabilitation Protocols</span><span style="font-weight:normal; font-size:24px; color: #1068b2; margin-left: 40px; cursor: pointer;" onmouseover="this.style.color='#5bc3be'" onmouseout="this.style.color='#1068b2'">Cases</span></h1>
+            <div class="databases-main-content">
+                <div class="databases-left">
+                    <div class="left-box-databases" style="background-color: #f7f7f7;">
+                        <input type="text" name="" id="" placeholder="Search...">
+                        <div class="database-entries">
+                            <span>Injury location</span>
+                            <span>Injury type</span>
+                            <span>Injury severity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="databases-right">
+                    <div class="right-box-databases">
+                        <h1>Rectus Femoris Strain</h1>
+                        <div style="color: #444444; text-align: center; margin-top: -20px; margin-bottom: 20px; font-size: 20px;"><span><b>Dynamic Images</b></span></div>
+                        <div style="text-align: left;">
+                            <div><h2 style="color: #1068b2;">Injury Description</h2>
+                                </div>
+                            <span style="margin-top: 20px;"><b>Type of Injury:</b> Rectus Femoris Strain<br></span>
+                            <span style="margin-top: 20px;"><b>Mechanism of Injury:</b> The patient sustained the injury during a high-intensity sprint followed by a sudden change of direction while playing in a competitive soccer match.<br></span>
+                            <span style="margin-top: 20px;"><b>Symptoms:</b> Acute pain in the anterior thigh, swelling, and decreased range of motion. The patient reported an immediate sharp pain and inability to continue playing.<br></span>
+                        </div>
+                        <div id="wrapper" style="margin: 20px;"> 
+                            <h2 style="color: #1068b2;">Unhealthy Images</h2>
+                            <video style="background-color: #18191a;" id="home1" width="20" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted> 
+                                <source id="src" src="{{ url_for('static', filename='UM01_calfraise_1_VSCAN.mp4') }}" type="video/mp4"/>
+                            </video>
+                            <h2 style="color: #1068b2;">Healthy Images</h2>
+                            <video style="background-color: #18191a;" id="home2" width="400" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted> 
+                                <source id="src" src="{{ url_for('static', filename='UM01_calfraise_2_VSCAN.mp4') }}" type="video/mp4"/> 
+                            </video>
+                            <div class="clear"></div> 
+                        </div>
+                        <div style="text-align: left;">
+                            <div><h2 style="color: #1068b2;">Ultrasound Results</h2>
+                                </div>
+                            <span style="margin-top: 20px;">The dynamic ultrasound revealed a hypoechoic area within the rectus femoris muscle indicative of a strain.                                <br></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="community-content" style="display: none;">
+            <h1 style="text-align: center; color: #1068b2; margin-top: 40px; margin-bottom: 30px; font-size: 40px;">COMMUNITY</h1>
+            <div class="community-container">
+                <div class="help-your-peers">
+                    <h2 style="padding: 10px">Help Your Peers</h2>
+                    <div class="post" style="background-color: lightsteelblue;">
+                        <div class="user-info">
+                            <img src="{{ url_for('static', filename='athlete2.png') }}" alt="Marloes Janssen" style="width: 40px; height: 40px; background-color: #f0f0f0">
+                            <span><b>Andrew Amstel</b></span>
+                        </div>
+                        <p>How would you (method/plugin) analyze the thickness of the middle fascia in this muscle ultrasound scan? Any tutorials?</p>
+                        <img src="{{ url_for('static', filename='image1.png') }}" alt="Ultrasound Scan" style="border-radius: 9px;">
+                        <div class="post-actions">
+                            <button><b>Question</b></button>
+                        </div>
+                    </div>
+                    <div class="answer">
+                        <div class="user-info">
+                            <img src="{{ url_for('static', filename='athlete3.png') }}" alt="Thijs Groen" style="width: 40px; height: 40px; background-color: #f0f0f0">
+                            <span><b>Thijs Groen</b></span>
+                        </div>
+                        <p>Answer to the question.</p>
+                        <div class="post-actions">
+                            <button style="color:#1068b2"><b>Answer</b></button>
+                        </div>
+                    </div>
+                    <div class="post" style="background-color: lightsteelblue;">
+                        <div class="user-info">
+                            <img src="{{ url_for('static', filename='Intersect-opacity-4.png') }}" alt="Jessy Dijkstra" style="width: 40px; height: 40px; background-color: #f0f0f0">
+                            <span><b>Anne Klein</b></span>
+                        </div>
+                        <p>Another question.</p>
+                        <div class="post-actions">
+                            <button><b>Question</b></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="professional-updates">
+                    <h2 style="padding: 10px">Professional Updates</h2>
+                    <div class="update">
+                        <div class="user-info">
+                            <img src="{{ url_for('static', filename='logo.png') }}" alt="Usono" style="width: 40px; height: 40px; background-color: #f0f0f0">
+                            <span><b>Usono</b></span>
+                        </div>
+                        <p>Official pictures from the exciting <b style="color: #1068b2;">Clínicas Espregueira</b> Congress in Porto last week! Great shots with great people like <b style="color: #1068b2;">Álvaro Marcos Silva</b>, <b style="color: #1068b2;">João Espregueira Mendes</b>, <b style="color: #1068b2;">Tiago Rodrigues Lopes</b>, <b style="color: #1068b2;">Rogério Pereira</b>, <b style="color: #1068b2;">Pedro Prata</b> and <b style="color: #1068b2;">Antonio Melo</b>!</p>
+                        <img src="{{ url_for('static', filename='image5.png') }}" alt="Congress" style="border-radius: 9px;">
+                        <div class="update-actions">
+                            <button><a href="#"><i class="fas fa-solid fa-thumbs-up" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                            <button><a href="#"><i class="fas fa-solid fa-comment" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                            <button><a href="#"><i class="fas fa-solid fa-share" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="user-info">
+                            <img src="{{ url_for('static', filename='Intersect-opacity-1.png') }}" alt="Vera van Beek" style="width: 40px; height: 40px; background-color: white">
+                            <span><b>Susan Walter</b></span>
+                        </div>
+                        <p>Take a look at my paper . . . <b onmouseover="this.style.color='#5bc3be'" onmouseout="this.style.color='black'"> See more</b></p>
+                        <img src="{{ url_for('static', filename='image2.png') }}" alt="Paper" style="border-radius: 9px;">
+                        <div class="update-actions">
+                            <button><a href="#"><i class="fas fa-solid fa-thumbs-up" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                            <button><a href="#"><i class="fas fa-solid fa-comment" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                            <button><a href="#"><i class="fas fa-solid fa-share" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-groups-forums" style="background-color: #f0f0f0;">
+                    <h2 style="padding: 10px;">MY GROUPS</h2>
+                    <ul class="groups">
+                        <li><img src="{{ url_for('static', filename='Ellipse 7.png') }}" alt="Usono Ambassadors" style="width: 60px; height: 60px; margin-right: 20px;"> Usono Ambassadors</li>
+                        <li><img src="{{ url_for('static', filename='Ellipse 8.png') }}" alt="Physiotherapists Noord-Brabant" style="width: 60px; height: 60px; margin-right: 20px;"> Physiotherapists Noord-Brabant</li>
+                        <li><img src="{{ url_for('static', filename='Ellipse 9.png') }}" alt="Ultrasound Education" style="width: 60px; height: 60px;margin-right: 20px;"> Ultrasound Education</li>
+                        <li style="float: right; margin-right: 10px; "><a href="#"><b>View all</b></a></li>
+                    </ul>
+                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding: 10px;">MY FORUMS</h2>
+                    <ul class="forums">
+                        <li><img src="{{ url_for('static', filename='Ellipse 12.png') }}" alt="Sports Medicine" style="width: 60px; height: 60px; margin-right: 20px;"> Sports Medicine</li>
+                        <li><img src="{{ url_for('static', filename='Ellipse 11.png') }}" alt="Dynamic Ultrasound" style="width: 60px; height: 60px; margin-right: 20px;"> Dynamic Ultrasound</li>
+                        <li><img src="{{ url_for('static', filename='Ellipse 9.png') }}" alt="US Innovation" style="width: 60px; height: 60px; margin-right: 20px;"> US Innovation</li>
+                        <li><img src="{{ url_for('static', filename='Ellipse 13.png') }}" alt="ACL Research" style="width: 60px; height: 60px; margin-right: 20px;"> ACL Research</li>
+                        <li style="float: right; margin-right: 10px;"><a href="#"><b>View all</b></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
