@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USONO Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/f1d7a99d18.js" crossorigin="anonymous"></script>
+    <script>
+        function redirectToInfoPage() {
+            window.location.href = "{{ url_for('info') }}";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="https://www.usono.com/" target="_blank" class="user-icons">
+                <div class="user-icons">
+                    <img src="{{ url_for('static', filename='logo.png') }}" style="width: 60px; height: 25px; margin: 10px;">
+                    <span class="user-name">Usono</span>
+                </div>
+            </a>
+            <div class="user-icons">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;">
+                    <a class="fa-solid fa-house" style="font-size: 26px;"></a><span class="user-name">Home</span>
+                </div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="color: #1068b2; border-color: transparent;"><b>JM</b><span class="user-name">Julia Moss</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('{{ url_for('static', filename='Intersect-opacity-1.png') }}');"><b>SW</b><span class="user-name">Susan Walter</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('{{ url_for('static', filename='Intersect-opacity-2.png') }}');"><b>AA</span>Andrew Amstel</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('{{ url_for('static', filename='Intersect-opacity-3.png') }}');"><b>LS</b><span class="user-name">Leander Smith</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-image: url('{{ url_for('static', filename='Intersect-opacity-4.png') }}');"><b>AK</b><span class="user-name">Anne Klein</span></div>
+            </div>
+            <div class="user-icons">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;">
+                    <a class="fa-solid fa-plus" style="font-size: 26px;"></a><span class="user-name">Add</span>
+                </div>
+            </div>
+            <div class="user-icons" style="bottom: 0;">
+                <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;">
+                    <a class="fa-solid fa-circle-info" style="font-size: 26px;" onclick="redirectToInfoPage()"></a><span class="user-name">Info</span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main">
+            <div class="main-top">
+                <div>
+                    <h2 style="color: #1068b2; padding: 10px;">JULIA MOSS<span style="font-weight:normal; color: #1068b2;"> | Patient Dashboard</span></h2>
+                </div>
+                <div style="display: flex; margin-left: 63.5%;">
+                    <a href="#"><i class="fas fa-solid fa-download" style="padding: 5px; margin-top: 10px;"></i></a>
+                    <a href="#"><i class="fas fa-solid fa-upload" style="padding: 5px; margin-top: 10px; margin-left: 30%;"></i></a>
+                    <button class="button icon-button" style="margin-top: 8px; margin-left: 20%;"><p style="font-size: 16px;">SAVE</p></button>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="user-stats">
+                    <div class="user">
+                        <img src="{{ url_for('static', filename='user.png') }}" class="user-img">
+                        <div>
+                            <h3>Patient ID: 0024</h3>
+                            <table style="width: 400px; color: #444444;">
+                                <tr>
+                                    <td>Age: 27</td>
+                                    <td class="data-2">DOB: 16/02/1997</td>
+                                </tr>
+                                <tr>
+                                    <td>Sex: Female</td>
+                                </tr>
+                                <tr>
+                                    <td>Weight: 62.3 kg</td>
+                                    <td class="data-2">last updated: 04/02/2024</td>
+                                </tr>
+                                <tr>
+                                    <td>Height: 169 cm</td>
+                                    <td class="data-2">last updated: 07/06/2020</td>
+                                </tr>
+                            </table>
+                            <p style="font-size: 14px; padding-top: 12px;">Specialty: Defensive midfielder (Football)</p>
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <h3 style="color: #2d82b6;">Scan Stats</h3>
+                        <div style="display: flex;">
+                            <div>
+                                <table style="width: 380px; color: #444444;">
+                                    <tr>
+                                        <td>Position</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>Left Calf</option>
+                                                  <option>Right Calf</option>
+                                                  <option>Left Thigh</option>
+                                                  <option>Right Thigh</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>Gastrocnemius medialis</option>
+                                                  <option>Tibialis anterior</option>
+                                                  <option>Tibialis soleus</option>
+                                                  <option>Vastus lateralis</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fascicle Length</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>12.7cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pennation Angle</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>19.9°</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Thickness</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.15cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Volume</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>19.70cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PCSA</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.55cm<sup>2</sup></option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fascicle CSA</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.22cm<sup>2</sup></option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Force Transmission</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>0.942</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Force</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>46.5N</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Muscle Efficiency</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>0.942</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>MQI</td>
+                                        <td>
+                                            <form>
+                                                <select class="dropdown">
+                                                  <option>1.08cm</option>
+                                                  <option>Enter Measurement</option>
+                                                </select>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <img src="{{ url_for('static', filename='muscle.png') }}" style="height: 480px; margin-left: 5%; padding: 0px 20px;">
+                        </div>
+                        <p class="data-2" style="text-align: left; margin-top: 10px;">NOTE: Visualize the target area before starting the scan. Use external markers or indicators to guide the placement of the transducer. Confirm the alignment visually and adjust as needed.</p>
+                        <div class="button-container" style="margin-top: 20px;">
+                            <button class="toggle-button" style="box-shadow: 0px 1px 4px #D0D0D0;" onclick="pauseVideos()">Stop Scanning</button>
+                            <script>
+                                var isScanning = false;
+
+                                function toggleScanning() {
+                                    var videos = document.getElementsByTagName('video');
+                                    var button = document.querySelector('.toggle-button');
+
+                                    if (isScanning) {
+                                        for (var i = 0; i < videos.length; i++) {
+                                            videos[i].pause();
+                                        }
+                                        button.textContent = 'Start Scanning';
+                                    } else {
+                                        for (var i = 0; i < videos.length; i++) {
+                                            videos[i].play();
+                                        }
+                                        button.textContent = 'Stop Scanning';
+                                    }
+
+                                    isScanning = !isScanning;
+                                }
+
+                                var button = document.querySelector('.toggle-button');
+                                button.textContent = 'Start Scanning';
+                                button.onclick = toggleScanning;
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scan">
+                    <div style="position: relative;">
+                        <div class="video-container">
+                            <video id="vid" autoplay loop muted style="width:100%">
+                                <source id="src" src="{{ url_for('static', filename='output_video_reencoded.mp4') }}" type="video/mp4">
+                             </video>
+                             <div class="overlay-text" style="bottom: 15px; width: 100%; display: flex; justify-content: space-between;">
+                             <button id="change0" class="button switch-button" style="width: 24%;">Raw Input</button>
+                             <button id="change1" class="button switch-button" style="width: 24%;">Raw Output</button>
+                             <button id="change2" class="button switch-button" style="width: 24%;">Proc Scan</button>
+                             <button id="change3" class="button switch-button" style="width: 24%;">MTJ Scan</button>
+                             <script>
+                                const v = document.getElementById("vid");
+                                const s = document.getElementById("src");
+
+                                function changeVideo0() {
+                                   s.src = "{{ url_for('static', filename='calf_raise.mp4') }}";
+                                   v.load();
+                                   v.play();
+                                }
+
+                                function changeVideo1() {
+                                   s.src = "{{ url_for('static', filename='output_video_reencoded.mp4') }}";
+                                   v.load();
+                                   v.play();
+                                }
+
+                                function changeVideo2() {
+                                    s.src = "{{ url_for('static', filename='calf_raise_proc.mp4') }}";
+                                    v.load();
+                                    v.play();
+                                }
+                                function changeVideo3() {
+                                    s.src = "{{ url_for('static', filename='calf_deepMTJ.mp4') }}";
+                                    v.load();
+                                    v.play();
+                                }
+
+                                document.getElementById("change0").onclick=changeVideo0;
+                                document.getElementById("change1").onclick=changeVideo1;
+                                document.getElementById("change2").onclick=changeVideo2;
+                                document.getElementById("change3").onclick=changeVideo3;
+                               </script>
+                               </div>
+                        </div>
+                        <div class="overlay-text" style="top: 15px; left: 15px; background-color: rgba(0 0 0 /50%); border-radius: 15px; padding: 10px;">
+                            <i class="fa-regular fa-circle-dot" style="color: #FF6700;"></i>
+                            <span style="font-size: 20px;">LIVE</span>
+                            <p style="font-size: 12px; font-weight: bold;">Scan Settings</p>
+                            <p style="font-size: 12px;">FPS: 81</p>
+                            <p style="font-size: 12px;">Frequency: 5 MHz</p>
+                            <P style="font-size: 12px;">Zoom: 100%</P>
+                        </div>
+                        <div class="overlay-text" style="top: 15px; right: 0;">
+                            <button class="button capture-button">Capture Image</button>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <video style="border-radius: 15px;" width="320px" controls loop muted>
+                            <source id ='video-source' src="{{ url_for('static', filename='line_graph_video_reencoded.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div style="padding: 10px; padding-left: 0;">
+                            <h4>Gastrocnemius Medialis Strain</h4>
+                            <p>Date of injury: 29/12/2023<p>
+                            <p style="margin: 5px 0px; font-size: 14px;">A moderate-grade strain identified in the gastrocnemius medialis muscle of the left calf, located approximately 7 cm below the popliteal fossa. Clinical examination reveals localized tenderness and swelling over the medial aspect of the calf. Ultrasound imaging confirms the presence of a tear within muscle fibers, extending longitudinally along medial border.</p>
+                            <button class="button">Explore similar cases</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history">
+            <h2>History</h2>
+            <div class="record" style="min-height: 6.4em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #24</h4></td>
+                        <td><h4 style="text-align: right;">20/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Calf</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Tibialis ant.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <div class="record" style="min-height: 6.4em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #23</h4></td>
+                        <td><h4 style=" text-align: right;">12/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Calf</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Gastrocnemius med.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <div class="record" style="min-height: 6.4em;">
+                <table style="width: 100%; color: #444444;">
+                    <tr>
+                        <td><h4>Session #24</h4></td>
+                        <td><h4 style=" text-align: right;">03/02/2024</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td class="data-1">Left Thigh</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle</td>
+                        <td class="data-1">Vastus lat.</td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle Length</td>
+                        <td class="data-1">12.7cm</td>
+                    </tr>
+                    <tr>
+                        <td>Pennation Angle</td>
+                        <td class="data-1">19.9°</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Thickness</td>
+                        <td class="data-1">1.15cm</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Volume</td>
+                        <td class="data-1">19.70cm<sup>3</sup></td>
+                    </tr>
+                    <tr>
+                        <td>PCSA</td>
+                        <td class="data-1">1.55cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Fascicle CSA</td>
+                        <td class="data-1">1.22cm<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Force Transmission</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Force</td>
+                        <td class="data-1">46.5 N</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle Efficiency</td>
+                        <td class="data-1">0.942</td>
+                    </tr>
+                    <tr>
+                        <td>MQI</td>
+                        <td class="data-1">1.08cm</td>
+                    </tr>
+                </table>
+                <div class="button-container">
+                    <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+                </div>
+            </div>
+            <!-- Additional record divs -->
+            <h2>Progress</h2>
+            <video style="border-radius: 15px;" width="100%" controls loop muted>
+                <source src="{{ url_for('static', filename='bar_graph_video_reencoded.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="button-container">
+                <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
