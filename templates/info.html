@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info Page</title>
+    <style>
+        body, html {
+            margin: 10;
+            padding: 10;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='Screenshot 2024-05-23 175802.png') }}" alt="Info Image">
+</body>
+</html>
