@@ -37,7 +37,7 @@ The DL_Track_US package provides an easy to use graphical user interface (GUI) f
 
 Model 1 (US_Track_US): https://dltrack.readthedocs.io/en/latest/index.html
 
-Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section - Download the DL_Track_US executable)
+Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section - Download the DL_Track_US executable). From here, download the model-fasc and model-apo files in h5 format.
 
 Model 2: [Model 2 Documentation Link]
 
