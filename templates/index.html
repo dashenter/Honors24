@@ -14,7 +14,7 @@
                 videoPlayer.play();
         }
     </script>
-    
+
 </head>
 <body>
     <div class="container">
@@ -39,22 +39,22 @@
             </div>
             <div class="user-icons">
                 <div class="user-circle" style="background-image: url('static/Intersect-opacity-1.png');"><b>SW</b><span class="user-name">Susan Walter</span></div>
-            </div> 
+            </div>
             <div class="user-icons">
                 <div class="user-circle" style="background-image: url('static/Intersect-opacity-2.png');"><b>AA</b><span class="user-name">Andrew Amstel</span></div>
-            </div> 
+            </div>
             <div class="user-icons">
                 <div class="user-circle" style="background-image: url('static/Intersect-opacity-3.png');"><b>TG</b><span class="user-name">Thijs Groen</span></div>
-            </div> 
+            </div>
             <div class="user-icons">
                 <div class="user-circle" style="background-image: url('static/Intersect-opacity-4.png');"><b>AK</b><span class="user-name">Anne Klein</span></div>
             </div>
             <div class="user-icons">
                 <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-plus" style="font-size: 26px;"></a><span class="user-name">Add</span></div>
-            </div>  
+            </div>
             <div class="user-icons" style="bottom: 0;margin-top: 90px;" onclick="showCommunity()">
                 <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-users" style="font-size: 26px;"></a><span class="user-name">Community</span></div>
-            </div> 
+            </div>
             <script>
                 function showCommunity() {
                     document.getElementById('dashboard-content').style.display = 'none';
@@ -94,7 +94,7 @@
             </script>
             <div class="user-icons" style="bottom: 0;">
                 <div class="user-circle" style="background-color: transparent; border-color: transparent; box-shadow: none;"><a class="fa-solid fa-circle-info" style="font-size: 26px;"></a><span class="user-name">Info</span></div>
-            </div> 
+            </div>
         </nav>
 
         <div class="main" id="dashboard-content">
@@ -319,17 +319,17 @@
                 <div class="scan">
                     <div style="position: relative;">
                         <!-- <video style="border-radius: 15px;" width="100%" controls loop muted id="video-player">
-                            <source id="video-source" src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                            <source id="video-source" src="{{ url_for('static', filename='output_video_reencoded.mp4') }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video> -->
                         <div class="video-container">
                             <!--
                             <video style="border-radius: 15px;" id="videoPlayer" width="100%" max-height="90%" loop muted>
-                                <source id ='videoSource' src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                                <source id ='videoSource' src="{{ url_for('static', filename='output_video_reencoded.mp4') }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>-->
                             <video id="vid" autoplay loop muted style="width:100%">
-                                <source id="src" src="{{ url_for('static', filename='output_video.mp4') }}" type="video/mp4">
+                                <source id="src" src="{{ url_for('static', filename='output_video_reencoded.mp4') }}" type="video/mp4">
                              </video>
                              <div class="overlay-text" style="bottom: 15px; width: 100%; display: flex; justify-content: space-between;">
                              <button id="change0" class="button switch-button" style="width: 24%;">Raw Input</button>
@@ -340,9 +340,9 @@
                                 const v = document.getElementById("vid");
                                 const s = document.getElementById("src");
                                 var isPlaying = false;
-                                
-                                function changeVideo0() { 
-                                    
+
+                                function changeVideo0() {
+
                                     isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
                                    s.src = "{{ url_for('static', filename='calf_raise.mp4') }}";
                                    v.load();
@@ -354,19 +354,19 @@
                                    }
                                 }
 
-                                function changeVideo1() { 
+                                function changeVideo1() {
                                     isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
-                                   s.src = "{{ url_for('static', filename='output_video.mp4') }}";
+                                   s.src = "{{ url_for('static', filename='output_video_reencoded.mp4') }}";
                                    v.load();
-                                
+
                                    if(!isPlaying){
                                     v.play();
                                    } else {
                                        console.log('playing...');
                                    }
                                 }
-                               
-                                function changeVideo2() { 
+
+                                function changeVideo2() {
                                     isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
                                     s.src = "{{ url_for('static', filename='calf_raise_proc.mp4') }}";
                                     v.load();
@@ -376,7 +376,7 @@
                                        console.log('playing...');
                                    }
                                 }
-                                function changeVideo3() { 
+                                function changeVideo3() {
                                     isPlaying = v.currentTime > 0 && !v.load && !v.ended && v.readyState > v.HAVE_CURRENT_DATA;
                                     s.src = "{{ url_for('static', filename='calf_deepMTJ.mp4') }}";
                                     v.load();
@@ -386,13 +386,13 @@
                                        console.log('playing...');
                                    }
                                 }
-                                
-                                document.getElementById("change0").onclick=changeVideo0; 
-                                document.getElementById("change1").onclick=changeVideo1;       
-                                document.getElementById("change2").onclick=changeVideo2; 
-                                document.getElementById("change3").onclick=changeVideo3; 
+
+                                document.getElementById("change0").onclick=changeVideo0;
+                                document.getElementById("change1").onclick=changeVideo1;
+                                document.getElementById("change2").onclick=changeVideo2;
+                                document.getElementById("change3").onclick=changeVideo3;
                                </script>
-                               </div>                               
+                               </div>
                         </div>
                         <div class="overlay-text" style="bottom: 70px; left: 20px; background-color: rgba(0 0 0 /50%); border-radius: 15px; padding: 10px;">
                             <i class="fa-regular fa-circle-dot" style="color: #FF6700;"></i>
@@ -407,14 +407,14 @@
                         </div>
                         <!--
                         <div class="overlay-text" style="bottom: 15px; width: 100%; display: flex; justify-content: space-between;">
-                            <button class="button switch-button" style="width: 32%;" onclick="playVideo('output_video.mp4')">Raw Scan</button>
+                            <button class="button switch-button" style="width: 32%;" onclick="playVideo('output_video_reencoded.mp4')">Raw Scan</button>
                             <button class="button switch-button" style="width: 32%;" onclick="playVideo('calf_raise_proc.mp4')">Proc Scan</button>
                             <button class="button switch-button" style="width: 32%;" onclick="playVideo('calf_deepMTJ.mp4')">Annotated Scan</button>
                         </div> -->
                     </div>
                     <div style="display: flex;">
                         <video style="border-radius: 15px;" width="320px" controls loop muted>
-                            <source id ='video-source' src="{{ url_for('static', filename='line_graph_video.mp4') }}" type="video/mp4">
+                            <source id ='video-source' src="{{ url_for('static', filename='line_graph_video_reencoded.mp4') }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div style="padding: 10px; padding-left: 0; margin: 20px;">
@@ -424,7 +424,7 @@
                             <button class="button">Explore similar cases</button>
                         </div>
                     </div>
-                 
+
                 </div>
             </div>
         </div>
@@ -611,9 +611,9 @@
             <!-- Additional record divs -->
             <h2>Progress</h2>
             <video style="border-radius: 15px;" width="100%" controls loop muted>
-                <source src="{{ url_for('static', filename='bar_graph_video.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='bar_graph_video_reencoded.mp4') }}" type="video/mp4">
                 Your browser does not support the video tag.
-            </video>            
+            </video>
             <div class="button-container">
                 <button class="button" style="box-shadow: 0px 1px 4px #D0D0D0;">View</button>
             </div>
@@ -714,16 +714,16 @@
                             <span style="margin-top: 20px;"><b>Mechanism of Injury:</b> The patient sustained the injury during a high-intensity sprint followed by a sudden change of direction while playing in a competitive soccer match.<br></span>
                             <span style="margin-top: 20px;"><b>Symptoms:</b> Acute pain in the anterior thigh, swelling, and decreased range of motion. The patient reported an immediate sharp pain and inability to continue playing.<br></span>
                         </div>
-                        <div id="wrapper" style="margin: 20px;"> 
+                        <div id="wrapper" style="margin: 20px;">
                             <h2 style="color: #1068b2;">Unhealthy Images</h2>
-                            <video style="background-color: #18191a;" id="home1" width="20" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted> 
+                            <video style="background-color: #18191a;" id="home1" width="20" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted>
                                 <source id="src" src="{{ url_for('static', filename='UM01_calfraise_1_VSCAN.mp4') }}" type="video/mp4"/>
                             </video>
                             <h2 style="color: #1068b2;">Healthy Images</h2>
-                            <video style="background-color: #18191a;" id="home2" width="400" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted> 
-                                <source id="src" src="{{ url_for('static', filename='UM01_calfraise_2_VSCAN.mp4') }}" type="video/mp4"/> 
+                            <video style="background-color: #18191a;" id="home2" width="400" height="300" poster="images/video.jpg" controls="controls" autoplay loop muted>
+                                <source id="src" src="{{ url_for('static', filename='UM01_calfraise_2_VSCAN.mp4') }}" type="video/mp4"/>
                             </video>
-                            <div class="clear"></div> 
+                            <div class="clear"></div>
                         </div>
                         <div style="text-align: left;">
                             <div><h2 style="color: #1068b2;">Ultrasound Results</h2>
@@ -734,7 +734,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <div id="community-content" style="display: none;">
             <h1 style="text-align: center; color: #1068b2; margin-top: 40px; margin-bottom: 30px; font-size: 40px;">COMMUNITY</h1>
@@ -821,7 +821,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </body>
 </html>
