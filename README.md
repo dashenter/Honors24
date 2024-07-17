@@ -39,7 +39,7 @@ Model 1 (US_Track_US): https://dltrack.readthedocs.io/en/latest/index.html
 
 Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section - Download the DL_Track_US executable). From here, download the model-fasc and model-apo files in h5 format.
 
-Model 2: [Model 2 Documentation Link]
+Model 2 (deepMTJ): clone the repository from https://github.com/luuleitner/deepMTJ.git and download the trained model from https://storage.googleapis.com/deepmtj/IEEEtbme_model_2021/2021_Unet_deepmtj_ieeetbme_model.tf
 
 Ensure that the models are correctly downloaded.
 
