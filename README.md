@@ -40,7 +40,6 @@ Model 1 (US_Track_US): https://dltrack.readthedocs.io/en/latest/index.html
 Model 1.2 (US_Track_US_Example): https://dltrack.readthedocs.io/en/latest/installation.html (refer to the section - Download the DL_Track_US executable). From here, download the model-fasc and model-apo files in h5 format.
 
 Model 2 (deepMTJ): clone the repository from https://github.com/luuleitner/deepMTJ.git and download the trained model from https://storage.googleapis.com/deepmtj/IEEEtbme_model_2021/2021_Unet_deepmtj_ieeetbme_model.tf
-
 Ensure that the models are correctly downloaded.
 
 [3]: https://dltrack.readthedocs.io/en/latest/index.html
@@ -59,13 +58,17 @@ be saved in the static folder.
 
 - input_video_path: Path to the input video you want to analyze. 
 
-- output_video_path: Path where you want to save the analyzed video. 
+- output_video_path: Path where you want to save the analyzed video.
+
+- output_video_path_deepmtj: Path where you want to save the deepMTJ analyzed video.
 
 - bar_graph_video_path: Path where you want to save the bar graph video.
 
 - apo_model_path: Path to the APO model.
 
 - fasc_model_path: Path to the FASC model.
+
+- deepmtj_model_path: Path to the deepMTJ model.
 
 Follow all the comments made in this file. 
 
