@@ -151,7 +151,6 @@ def reencode_to_avc1(mp4_path, reencoded_mp4_path):
     subprocess.run(command, check=True)
 
 
-# Processing
 def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_path, line_graph_video_path, apo_model_path, fasc_model_path,
                         parameters, calib_dist=None, step=1, flip='no_flip', filter_fasc=False, update_interval=30):
 
@@ -202,9 +201,20 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
                 break
 
             if frame_count % update_interval == 0:
-                fascicle_length = random.uniform(10, 15)
-                pennation_angle = random.uniform(10, 25)
-                muscle_thickness = random.uniform(0.5, 2.0)
+                # Preprocess frame for model input
+                input_frame = cv2.resize(frame, (512, 512))
+                input_frame = input_frame / 255.0
+                input_frame = np.expand_dims(input_frame, axis=0)
+
+                # Make predictions
+                fasc_prediction = fasc_model.predict(input_frame)[0]
+                apo_prediction = apo_model.predict(input_frame)[0]
+
+                # Calculate metrics based on predictions
+                fascicle_length = (np.sum(fasc_prediction > parameters['fasc_threshold']) * (calib_dist if calib_dist else 1)) / 100
+                pennation_angle = np.mean(apo_prediction > parameters['apo_threshold']) * (parameters['max_pennation'] - parameters['min_pennation']) + parameters['min_pennation']
+                muscle_thickness = np.sum(fasc_prediction > parameters['fasc_threshold']) * (calib_dist if calib_dist else 1) / width
+
                 stats['fascicle_length'].append(fascicle_length)
                 stats['pennation_angle'].append(pennation_angle)
                 stats['muscle_thickness'].append(muscle_thickness)
@@ -244,7 +254,6 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
         reencode_to_avc1(output_video_path, output_video_path.replace('.mp4', '_reencoded.mp4'))
         reencode_to_avc1(bar_graph_video_path, bar_graph_video_path.replace('.mp4', '_reencoded.mp4'))
         reencode_to_avc1(line_graph_video_path, line_graph_video_path.replace('.mp4', '_reencoded.mp4'))
-
 
 # Define file paths and parameters
 # Feel free to change them according to your layout.
