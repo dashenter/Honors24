@@ -744,3 +744,31 @@ nav:hover {
         float: none;
     }
 }
+
+.custom-tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    left: 10px; /* Adjust placement next to the question mark */
+}
+
+.custom-tooltip::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #333 transparent transparent;
+}
+
+.fa-question-circle {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    padding: 5px;
+}
