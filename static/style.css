@@ -171,6 +171,28 @@ nav:hover {
     transition: 0.5s;
   }
 
+
+  .calculate-btn {
+    width: auto;
+    padding: 2px 10px 1px 10px;
+    border-radius: 15px;
+    border-color: transparent;
+    background: #FFFFFF;
+    color: #5bc3be;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0px 1px 4px #D0D0D0;
+    margin-left: 20px;
+}
+
+.calculate-btn:hover{
+    background: #5bc3be;
+    color: #fff;
+    transition: 0.5s;
+  }
+
 .scan {
     width: 55%;
     border-radius: 15px;
