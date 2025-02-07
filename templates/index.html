@@ -14,7 +14,6 @@
                 videoPlayer.play();
         }
     </script>
-
 </head>
 <body>
     <div class="container">
@@ -99,8 +98,9 @@
 
         <div class="main" id="dashboard-content">
             <div class="main-top">
-                <div>
-                    <h2 style="color: #1068b2; padding: 10px;">LUCAS KIEWEK<span style="font-weight:normal; color: #1068b2;"> | Patient Dashboard</span></h2>
+                <div style="display: flex; align-items: center;">
+                    <h2 style="color: #1068b2; padding-right: 10px;">LUCAS KIEWEK</h2>
+                    <span style="font-weight:normal; font-size: 20px; color: #1068b2;">| Patient Dashboard</span>
                 </div>
                 <div style="display: flex; margin-left: 65.5%;">
                     <a href="#"><i class="fas fa-solid fa-download" style="padding: 5px; margin-top: 10px;"></i></a>
@@ -114,29 +114,60 @@
             <div class="content">
                 <div class="user-stats">
                     <div class="user">
-                        <img src="{{ url_for('static', filename='lucas.png') }}" class="user-img">
+                        <img src="{{ url_for('static', filename='lucas.png') }}" class="user-img" style="margin: 10px">
                         <div>
-                            <h3>Patient ID: 0024</h3>
+                            <h3 style="margin-bottom: 10px;">Patient ID: 0024</h3>
                             <table style="width: 440px; color: #444444;">
-                                <tr>
-                                    <td>Age: 21</td>
-                                    <td class="data-2">DOB: 14/08/2002</td>
-                                </tr>
-                                <tr>
-                                    <td>Sex: Male</td>
-                                </tr>
-                                <tr>
-                                    <td>Weight: 75.3 kg</td>
-                                    <td class="data-2">last updated: 20/05/2024</td>
-                                </tr>
-                                <tr>
-                                    <td>Height: 183 cm</td>
-                                    <td class="data-2">last updated: 04/06/2024</td>
-                                </tr>
+                                <div style="display: flex; align-items: center;">
+                                    <label for="height-input" style="font-weight: normal; margin-right: 5px; margin-left: 15px;">Age:</label>
+                                    <input type="number" id="height-input" value="21" style="border: none; font-size: 14px; 
+                                    padding: 0px 1px;
+                                    margin-left: 54px;
+                                    text-align: center;
+                                    color: #2d82b6;
+                                    border-radius: 5px;
+                                    margin-bottom: 10px;">
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <label for="height-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Weight (kg):</label>
+                                    <input type="number" id="height-input" value="75.3" style="border: none; font-size: 14px; 
+                                    padding: 0px 0.5px;
+                                    margin-left: 5px;
+                                    text-align: center;
+                                    color: #2d82b6;
+                                    border-radius: 5px;
+                                    margin-bottom: 10px;">
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <label for="height-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Height (cm):</label>
+                                    <input type="number" id="height-input" value="183" style="border: none; font-size: 14px; 
+                                    padding: 0px 0px;
+                                    margin-left: 5px;
+                                    text-align: center;
+                                    color: #2d82b6;
+                                    border-radius: 5px;margin-bottom: 8px;">
+                                </div>
+                                <div style="display: flex; align-items: center;"></div>
+                                    <label for="sex-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Sex:</label>
+                                    <select style="border: none; font-size: 14px; 
+                                    padding: 0px 25px;
+                                    margin-left: 58px;
+                                    text-align: center;
+                                    color: #2d82b6;
+                                    border-radius: 5px;margin-bottom: 10px;" id="sex-input">
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                
                             </table>
                             <p style="font-size: 14px; padding-top: 12px;">Specialty: Defensive midfielder (Football)</p>
                         </div>
                     </div>
+
+
+
+
 
                     <div class="stats">
                         <h3 style="color: #2d82b6;">Scan Stats</h3>
@@ -355,6 +386,10 @@
                                 button.textContent = 'Start Scanning';
                                 button.onclick = toggleScanning;
                             </script>
+
+                            <button class="calculate-btn" id="calculate-btn">
+                                Calculate
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -868,7 +903,46 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('calculate-btn').addEventListener('click', async function () {
+        const height = document.getElementById('height-input').value;
+        const sex = document.getElementById('sex-input').value;
+
+        if (!height) {
+            alert("Please enter height.");
+            return;
+        }
+
+        const response = await fetch('/get_model_outputs');
+        const modelData = await response.json();
+
+        const data = {
+            muscle_thickness: modelData.muscle_thickness,
+            pennation_angle: modelData.pennation_angle,
+            fascicle_length: modelData.fascicle_length,
+            height: height,
+            sex: sex
+        };
+
+        try {
+            const calcResponse = await fetch('/calculate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await calcResponse.json();
+            if (calcResponse.ok) {
+                document.getElementById('muscle-volume').textContent = result.muscle_volume + " cm³";
+                document.getElementById('pcsa').textContent = result.pcsa + " cm²";
+            } else {
+                alert("Error: " + result.error);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
             const questionIcons = document.querySelectorAll(".fa-question-circle");
         
             questionIcons.forEach((icon) => {
@@ -886,5 +960,8 @@
             });
         });
         </script>
+
 </body>
 </html>
+
+
