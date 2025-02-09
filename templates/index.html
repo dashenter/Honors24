@@ -14,6 +14,7 @@
                 videoPlayer.play();
         }
     </script>
+
 </head>
 <body>
     <div class="container">
@@ -119,8 +120,8 @@
                             <h3 style="margin-bottom: 10px;">Patient ID: 0024</h3>
                             <table style="width: 440px; color: #444444;">
                                 <div style="display: flex; align-items: center;">
-                                    <label for="height-input" style="font-weight: normal; margin-right: 5px; margin-left: 15px;">Age:</label>
-                                    <input type="number" id="height-input" value="21" style="border: none; font-size: 14px; 
+                                    <label for="age-input" style="font-weight: normal; margin-right: 5px; margin-left: 15px;">Age:</label>
+                                    <input type="number" id="age-input" value="21" style="border: none; font-size: 14px; 
                                     padding: 0px 1px;
                                     margin-left: 54px;
                                     text-align: center;
@@ -129,8 +130,8 @@
                                     margin-bottom: 10px;">
                                 </div>
                                 <div style="display: flex; align-items: center;">
-                                    <label for="height-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Weight (kg):</label>
-                                    <input type="number" id="height-input" value="75.3" style="border: none; font-size: 14px; 
+                                    <label for="weight-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Weight (kg):</label>
+                                    <input type="number" id="weight-input" value="75.3" style="border: none; font-size: 14px; 
                                     padding: 0px 0.5px;
                                     margin-left: 5px;
                                     text-align: center;
@@ -148,13 +149,13 @@
                                     border-radius: 5px;margin-bottom: 8px;">
                                 </div>
                                 <div style="display: flex; align-items: center;"></div>
-                                    <label for="sex-input" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Sex:</label>
+                                    <label for="sex-select" style="font-weight: normal; margin-right: 5px;margin-left: 15px;">Gender:</label>
                                     <select style="border: none; font-size: 14px; 
                                     padding: 0px 25px;
                                     margin-left: 58px;
                                     text-align: center;
                                     color: #2d82b6;
-                                    border-radius: 5px;margin-bottom: 10px;" id="sex-input">
+                                    border-radius: 5px;margin-bottom: 10px;" id="sex-select">
                                         <option value="male" selected>Male</option>
                                         <option value="female">Female</option>
                                     </select>
@@ -211,7 +212,7 @@
                                         <td>
                                             <form>
                                                 <select class="dropdown">
-                                                    <option>12.7cm</option>
+                                                    <option id="fascicle-length">12.7 cm</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -228,7 +229,7 @@
                                         <td>
                                             <form>
                                                 <select class="dropdown">
-                                                    <option>19.9°</option>
+                                                    <option id="pennation-angle">19.9°</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -244,8 +245,8 @@
                                         </td>
                                         <td>
                                             <form>
-                                                <select class="dropdown">
-                                                    <option>1.15cm</option>
+                                                <select id="muscle-thickness" class="dropdown">
+                                                    <option>1.15 cm</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -262,7 +263,7 @@
                                         <td>
                                             <form>
                                                 <select class="dropdown">
-                                                    <option>19.70cm³</option>
+                                                    <option id="muscle-volume">19.70 cm³</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -279,7 +280,7 @@
                                         <td>
                                             <form>
                                                 <select class="dropdown">
-                                                    <option>1.55cm²</option>
+                                                    <option id="pcsa">1.55 cm²</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -296,7 +297,7 @@
                                         <td>
                                             <form>
                                                 <select class="dropdown">
-                                                    <option>1.22cm²</option>
+                                                    <option>1.22 cm²</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -525,7 +526,7 @@
                     </tr>
                     <tr>
                         <td>Fascicle Length</td>
-                        <td class="data-1">12.7cm</td>
+                        <td class="data-1">12.7 cm</td>
                     </tr>
                     <tr>
                         <td>Pennation Angle</td>
@@ -533,19 +534,19 @@
                     </tr>
                     <tr>
                         <td>Muscle Thickness</td>
-                        <td class="data-1">1.15cm</td>
+                        <td class="data-1">1.15 cm</td>
                     </tr>
                     <tr>
                         <td>Muscle Volume</td>
-                        <td class="data-1">19.70cm<sup>3</sup></td>
+                        <td class="data-1">19.70 cm³</td>
                     </tr>
                     <tr>
                         <td>PCSA</td>
-                        <td class="data-1">1.55cm<sup>2</sup></td>
+                        <td class="data-1">1.55 cm²</td>
                     </tr>
                     <tr>
                         <td>Fascicle CSA</td>
-                        <td class="data-1">1.22cm<sup>2</sup></td>
+                        <td class="data-1">1.22 cm²</td>
                     </tr>
                     <tr>
                         <td>Force Transmission</td>
@@ -561,7 +562,7 @@
                     </tr>
                     <tr>
                         <td>MQI</td>
-                        <td class="data-1">1.08cm</td>
+                        <td class="data-1">1.08 cm</td>
                     </tr>
                 </table>
                 <div class="button-container">
@@ -584,7 +585,7 @@
                     </tr>
                     <tr>
                         <td>Fascicle Length</td>
-                        <td class="data-1">12.7cm</td>
+                        <td class="data-1">12.7 cm</td>
                     </tr>
                     <tr>
                         <td>Pennation Angle</td>
@@ -592,19 +593,19 @@
                     </tr>
                     <tr>
                         <td>Muscle Thickness</td>
-                        <td class="data-1">1.15cm</td>
+                        <td class="data-1">1.15 cm</td>
                     </tr>
                     <tr>
                         <td>Muscle Volume</td>
-                        <td class="data-1">19.70cm<sup>3</sup></td>
+                        <td class="data-1">19.70 cm³</td>
                     </tr>
                     <tr>
                         <td>PCSA</td>
-                        <td class="data-1">1.55cm<sup>2</sup></td>
+                        <td class="data-1">1.55 cm²</td>
                     </tr>
                     <tr>
                         <td>Fascicle CSA</td>
-                        <td class="data-1">1.22cm<sup>2</sup></td>
+                        <td class="data-1">1.22 cm²</td>
                     </tr>
                     <tr>
                         <td>Force Transmission</td>
@@ -620,7 +621,7 @@
                     </tr>
                     <tr>
                         <td>MQI</td>
-                        <td class="data-1">1.08cm</td>
+                        <td class="data-1">1.08 cm</td>
                     </tr>
                 </table>
                 <div class="button-container">
@@ -643,7 +644,7 @@
                     </tr>
                     <tr>
                         <td>Fascicle Length</td>
-                        <td class="data-1">12.7cm</td>
+                        <td class="data-1">12.7 cm</td>
                     </tr>
                     <tr>
                         <td>Pennation Angle</td>
@@ -651,19 +652,19 @@
                     </tr>
                     <tr>
                         <td>Muscle Thickness</td>
-                        <td class="data-1">1.15cm</td>
+                        <td class="data-1">1.15 cm</td>
                     </tr>
                     <tr>
                         <td>Muscle Volume</td>
-                        <td class="data-1">19.70cm<sup>3</sup></td>
+                        <td class="data-1">19.70 cm³</td>
                     </tr>
                     <tr>
                         <td>PCSA</td>
-                        <td class="data-1">1.55cm<sup>2</sup></td>
+                        <td class="data-1">1.55 cm²</td>
                     </tr>
                     <tr>
                         <td>Fascicle CSA</td>
-                        <td class="data-1">1.22cm<sup>2</sup></td>
+                        <td class="data-1">1.22 cm²</td>
                     </tr>
                     <tr>
                         <td>Force Transmission</td>
@@ -679,7 +680,7 @@
                     </tr>
                     <tr>
                         <td>MQI</td>
-                        <td class="data-1">1.08cm</td>
+                        <td class="data-1">1.08 cm</td>
                     </tr>
                 </table>
                 <div class="button-container">
@@ -903,45 +904,6 @@
     </div>
 
     <script>
-        document.getElementById('calculate-btn').addEventListener('click', async function () {
-        const height = document.getElementById('height-input').value;
-        const sex = document.getElementById('sex-input').value;
-
-        if (!height) {
-            alert("Please enter height.");
-            return;
-        }
-
-        const response = await fetch('/get_model_outputs');
-        const modelData = await response.json();
-
-        const data = {
-            muscle_thickness: modelData.muscle_thickness,
-            pennation_angle: modelData.pennation_angle,
-            fascicle_length: modelData.fascicle_length,
-            height: height,
-            sex: sex
-        };
-
-        try {
-            const calcResponse = await fetch('/calculate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await calcResponse.json();
-            if (calcResponse.ok) {
-                document.getElementById('muscle-volume').textContent = result.muscle_volume + " cm³";
-                document.getElementById('pcsa').textContent = result.pcsa + " cm²";
-            } else {
-                alert("Error: " + result.error);
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    });
-
     document.addEventListener("DOMContentLoaded", function () {
             const questionIcons = document.querySelectorAll(".fa-question-circle");
         
@@ -959,7 +921,63 @@
                 }
             });
         });
-        </script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("calculate-btn").addEventListener("click", function () {
+        // Extract height and sex
+        let height = parseFloat(document.getElementById("height-input").value);
+        let sex = document.getElementById("sex-select").value;
+        let muscleThicknessText = document.getElementById("muscle-thickness").value;
+
+        // Extract numerical values
+        let muscleThickness = parseFloat(muscleThicknessText.replace(/[^0-9.]/g, "")); // Remove non-numeric characters
+
+        // Validate input
+        if (isNaN(height) || isNaN(muscleThickness)) {
+            alert("Invalid input. Please check the values.");
+            return;
+        }
+
+        // ✅ Muscle Volume Calculation
+        function calculateMuscleVolume(muscle_thickness, height, sex) {
+            if (sex.toLowerCase() === "male") {
+                return 219.9 * muscle_thickness + 31.3 * ((height - 51.1) / 2.31) - 1758;
+            } else {
+                return 219.9 * muscle_thickness + 31.3 * ((height - 70.2) / 1.84) - 1758;
+            }
+        }
+
+        // Compute new muscle volume
+        let newMuscleVolume = calculateMuscleVolume(muscleThickness, height, sex);
+        newMuscleVolume = parseFloat(newMuscleVolume.toFixed(2)); // Round to 2 decimals
+
+        // ✅ Extract PCSA Inputs
+        let pennationAngleText = document.getElementById("pennation-angle").innerText;
+        let fascicleLengthText = document.getElementById("fascicle-length").innerText;
+
+        let pennationAngle = parseFloat(pennationAngleText.replace(/[^0-9.]/g, "")); // Remove "°"
+        let fascicleLength = parseFloat(fascicleLengthText.replace(/[^0-9.]/g, "")); // Remove "cm"
+
+        // Validate inputs
+        if (isNaN(pennationAngle) || isNaN(fascicleLength) || fascicleLength === 0) {
+            alert("Invalid PCSA input values.");
+            return;
+        }
+
+        // ✅ PCSA Calculation
+        function calculatePCSA(muscleVolume, pennationAngle, fascicleLength) {
+            return (muscleVolume * Math.cos(pennationAngle * (Math.PI / 180))) / fascicleLength;
+        }
+
+        let newPCSA = calculatePCSA(newMuscleVolume, pennationAngle, fascicleLength);
+        newPCSA = parseFloat(newPCSA.toFixed(2)); // Round to 2 decimals
+
+        // ✅ Update the Displayed Values
+        document.getElementById("muscle-volume").innerText = newMuscleVolume + " cm³";
+        document.getElementById("pcsa").innerText = newPCSA + " cm²";
+    });
+});
+    </script>
 
 </body>
 </html>
