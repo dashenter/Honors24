@@ -245,8 +245,8 @@
                                         </td>
                                         <td>
                                             <form>
-                                                <select id="muscle-thickness" class="dropdown">
-                                                    <option>1.15 cm</option>
+                                                <select class="dropdown">
+                                                    <option id="muscle-thickness">1.15 cm</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
                                             </form>
@@ -922,7 +922,7 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("calculate-btn").addEventListener("click", function () {
         // Extract height and sex
         let height = parseFloat(document.getElementById("height-input").value);
@@ -976,6 +976,18 @@
         document.getElementById("muscle-volume").innerText = newMuscleVolume + " cm³";
         document.getElementById("pcsa").innerText = newPCSA + " cm²";
     });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("static/metrics.json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("fascicle-length").innerText = data.fascicle_length + " cm";
+            document.getElementById("pennation-angle").innerText = data.pennation_angle + "°";
+            document.getElementById("muscle-thickness").innerText = data.muscle_thickness + " cm";
+        })
+        .catch(error => console.error("Error loading metrics:", error));
 });
     </script>
 
