@@ -288,10 +288,37 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
         line_vid_out.release()
         cv2.destroyAllWindows()
 
+                # After processing all frames, compute averages
+        if stats['fascicle_length']:
+            avg_fascicle_length = round(sum(stats['fascicle_length']) / len(stats['fascicle_length']), 2)
+        else:
+            avg_fascicle_length = 0
+
+        if stats['pennation_angle']:
+            avg_pennation_angle = round(sum(stats['pennation_angle']) / len(stats['pennation_angle']), 2)
+        else:
+            avg_pennation_angle = 0
+
+        if stats['muscle_thickness']:
+            avg_muscle_thickness = round(sum(stats['muscle_thickness']) / len(stats['muscle_thickness']), 2)
+        else:
+            avg_muscle_thickness = 0
+
+        # Save to a JSON file
+        results2 = {
+            "fascicle_length": avg_fascicle_length,
+            "pennation_angle": avg_pennation_angle,
+            "muscle_thickness": avg_muscle_thickness
+        }
+
+        with open("static/metrics.json", "w") as json_file:
+            json.dump(results2, json_file)
+
         # Re-encode the MP4 files to use the 'avc1' codec
         reencode_to_avc1(output_video_path, output_video_path.replace('.mp4', '_reencoded.mp4'))
         reencode_to_avc1(bar_graph_video_path, bar_graph_video_path.replace('.mp4', '_reencoded.mp4'))
         reencode_to_avc1(line_graph_video_path, line_graph_video_path.replace('.mp4', '_reencoded.mp4'))
+
 
 # Define file paths and parameters
 # Feel free to change them according to your layout.
@@ -317,5 +344,3 @@ parameters = {
 
 results = doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_path, line_graph_video_path,
                               apo_model_path, fasc_model_path, parameters, update_interval=30)
-
-
