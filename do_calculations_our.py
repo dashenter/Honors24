@@ -170,20 +170,46 @@ def annotate_frame(frame, annotations, position=(50, 50), font_scale=1, color=(2
 # At first, I tried dowloading https://ffmpeg.org/download.html, but there was no 'bin' directory, so I had to download the file mentioned above.
 # Try downloading either one of those and locate the 'bin' directory.
 def convert_avi_to_mp4(avi_path, mp4_path):
-    ffmpeg_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
+    ffmpeg_path = r"/Users/liischmidt/Documents/GitHub/Honors24/ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
     command = [ffmpeg_path, '-i', avi_path, '-vcodec', 'libx264', '-acodec', 'aac', mp4_path]
     subprocess.run(command, check=True)
 
 # Even after converting the videos into the MP4 format, they use the MP4 codec. It is necessary to have the AVC1 codec so the conversion is done in the snippet below.
 # Insert the same path to the ffmpeg.exe file as the one above
 def reencode_to_avc1(mp4_path, reencoded_mp4_path):
-    ffmpeg_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
+    ffmpeg_path = r"/Users/liischmidt/Documents/GitHub/Honors24/ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
     command = [ffmpeg_path, '-i', mp4_path, '-vcodec', 'libx264', '-acodec', 'aac', reencoded_mp4_path]
     subprocess.run(command, check=True)
 
 
 def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_path, line_graph_video_path, apo_model_path, fasc_model_path,
                         parameters, calib_dist=None, step=1, flip='no_flip', filter_fasc=False, update_interval=30):
+
+    def compute_shortening_velocity(fascicle_lengths, fps):
+        velocities = []
+        contraction_active = False
+        start_time, start_length = None, None
+
+        for i in range(1, len(fascicle_lengths)):
+            prev_length = fascicle_lengths[i - 1]
+            curr_length = fascicle_lengths[i]
+            time_elapsed = 1 / fps  # Time difference per frame
+
+            if curr_length < prev_length:  # Fascicle shortening detected
+                if not contraction_active:  # Start of contraction
+                    start_time = i * time_elapsed
+                    start_length = prev_length
+                    contraction_active = True
+            else:
+                if contraction_active:  # End of contraction
+                    end_time = (i - 1) * time_elapsed
+                    end_length = prev_length
+                    velocity = abs((end_length - start_length) / (end_time - start_time))  # Vf = ΔL / Δt
+                    velocities.append(velocity)
+                    contraction_active = False
+
+        return round(sum(velocities) / len(velocities), 2) if velocities else 0.0
+    
 
     # Loading the models without the specified parameter groups
     apo_model = load_model_without_groups(apo_model_path)
@@ -291,8 +317,10 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
                 # After processing all frames, compute averages
         if stats['fascicle_length']:
             avg_fascicle_length = round(sum(stats['fascicle_length']) / len(stats['fascicle_length']), 2)
+            avg_velocity = compute_shortening_velocity(stats['fascicle_length'], fps)
         else:
             avg_fascicle_length = 0
+            avg_velocity = 0.0
 
         if stats['pennation_angle']:
             avg_pennation_angle = round(sum(stats['pennation_angle']) / len(stats['pennation_angle']), 2)
@@ -304,11 +332,14 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
         else:
             avg_muscle_thickness = 0
 
+
         # Save to a JSON file
         results2 = {
             "fascicle_length": avg_fascicle_length,
             "pennation_angle": avg_pennation_angle,
-            "muscle_thickness": avg_muscle_thickness
+            "muscle_thickness": avg_muscle_thickness,
+            "shortening_velocity": avg_velocity
+
         }
 
         with open("static/metrics.json", "w") as json_file:
@@ -323,12 +354,12 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
 # Define file paths and parameters
 # Feel free to change them according to your layout.
 # If you are changing one of the output paths, make sure to have them located in the static folder!
-input_video_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\static\calf_raise.mp4"  #Path to the US video you want to analyze
-output_video_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\static\output_video.mp4" #Path to the analyzed output video.
-bar_graph_video_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\static\bar_graph_video.mp4" #Path to the created bar graph.
-line_graph_video_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\Honors24\static\line_graph_video.mp4" #Path to the created bar graph.
-apo_model_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\DL_Track_US_example\DL_Track_US_example\DL_Track_US_models\model-apo-VGG16-BCE-512.h5" #Path to the model.
-fasc_model_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\DL_Track_US_example\DL_Track_US_example\DL_Track_US_models\model-fasc-VGG16-BCE-512.h5" #Path to the model.
+input_video_path = r"/Users/liischmidt/Documents/GitHub/Honors24/static/calf_raise.mp4"  #Path to the US video you want to analyze
+output_video_path = r"/Users/liischmidt/Documents/GitHub/Honors24/static/calf_raise.mp4" #Path to the analyzed output video.
+bar_graph_video_path = r"static/UM01_calfraise_1_VSCAN.mp4" #Path to the created bar graph.
+line_graph_video_path = r"static/UM01_calfraise_1_VSCAN.mp4" #Path to the created line graph.
+apo_model_path = r"/Users/liischmidt/Downloads/model-apo-VGG16-BCE-512.h5" #Path to the model.
+fasc_model_path = r"/Users/liischmidt/Downloads/model-fasc-VGG16-BCE-512.h5" #Path to the model.
 
 
 # Based on different ultrasound videos, the parameters can be adjusted.
