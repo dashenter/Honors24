@@ -354,6 +354,21 @@
                                             </form>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                                             Vf
+                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" 
+                                            onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; 
+                                            color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; 
+                                            white-space: nowrap; z-index: 10;">
+                                                Avgerage shortening velocity (Vf) is the average speed at which muscle fascicles shorten during contraction.
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span id="shortening-velocity">0.00 cm/s</span>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                             <img src="{{ url_for('static', filename='muscle.png') }}" style="height: 410px; margin-left: 13%; padding: 0px 20px;">
@@ -938,7 +953,6 @@
             return;
         }
 
-        // ✅ Muscle Volume Calculation
         function calculateMuscleVolume(muscle_thickness, height, sex) {
             if (sex.toLowerCase() === "male") {
                 return 219.9 * muscle_thickness + 31.3 * ((height - 51.1) / 2.31) - 1758;
@@ -951,7 +965,6 @@
         let newMuscleVolume = calculateMuscleVolume(muscleThickness, height, sex);
         newMuscleVolume = parseFloat(newMuscleVolume.toFixed(2)); // Round to 2 decimals
 
-        // ✅ Extract PCSA Inputs
         let pennationAngleText = document.getElementById("pennation-angle").innerText;
         let fascicleLengthText = document.getElementById("fascicle-length").innerText;
 
@@ -963,8 +976,8 @@
             alert("Invalid PCSA input values.");
             return;
         }
+        
 
-        // ✅ PCSA Calculation
         function calculatePCSA(muscleVolume, pennationAngle, fascicleLength) {
             return (muscleVolume * Math.cos(pennationAngle * (Math.PI / 180))) / fascicleLength;
         }
@@ -972,12 +985,10 @@
         let newPCSA = calculatePCSA(newMuscleVolume, pennationAngle, fascicleLength);
         newPCSA = parseFloat(newPCSA.toFixed(2)); // Round to 2 decimals
 
-        // ✅ Update the Displayed Values
         document.getElementById("muscle-volume").innerText = newMuscleVolume + " cm³";
         document.getElementById("pcsa").innerText = newPCSA + " cm²";
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
     fetch("static/metrics.json")
@@ -986,6 +997,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("fascicle-length").innerText = data.fascicle_length + " cm";
             document.getElementById("pennation-angle").innerText = data.pennation_angle + "°";
             document.getElementById("muscle-thickness").innerText = data.muscle_thickness + " cm";
+            document.getElementById("shortening-velocity").innerText = data.shortening_velocity + " cm/s";
         })
         .catch(error => console.error("Error loading metrics:", error));
 });
