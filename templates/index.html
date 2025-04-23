@@ -194,16 +194,20 @@
                                             <form>
                                                 <select class="dropdown">
                                                   <option>Gastrocnemius medialis</option>
-                                                  <option>Tibialis anterior</option>
-                                                  <option>Tibialis soleus</option>
+                                                  <option>Gastrocnemius lateralis</option>
                                                   <option>Vastus lateralis</option>
+                                                  <option>Tibialis anterior</option>
+                                                  <option>Tibialis soleus</option<
                                                 </select>
                                           </form>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative; ">
                                             Fascicle Length
+                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
+                                                <span id="fl-status">⬤</span>
+                                            </div>
                                             <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
                                             <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
                                                 The length of the muscle fascicle measured during the scan.
@@ -221,6 +225,9 @@
                                     <tr>
                                         <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
                                             Pennation Angle
+                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
+                                                <span id="pa-status">⬤</span>
+                                            </div>
                                             <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
                                             <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
                                                 The angle between muscle fibers and the force-generating axis.
@@ -238,6 +245,9 @@
                                     <tr>
                                         <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
                                             Muscle Thickness
+                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
+                                                <span id="mt-status">⬤</span>
+                                            </div>
                                             <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
                                             <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
                                                 The thickness of the muscle measured at its midpoint.
@@ -255,6 +265,9 @@
                                     <tr>
                                         <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
                                             Muscle Volume
+                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
+                                                <span id="mv-status">⬤</span>
+                                            </div>
                                             <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
                                             <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
                                                 The total volume of the muscle measured during the scan.
@@ -354,7 +367,8 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <tr>
+
+                                    <!-- <tr>
                                         <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
                                              Vf
                                             <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" 
@@ -368,7 +382,8 @@
                                         <td>
                                             <span id="shortening-velocity">0.00 cm/s</span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
+
                                 </table>
                             </div>
                             <img src="{{ url_for('static', filename='muscle.png') }}" style="height: 410px; margin-left: 13%; padding: 0px 20px;">
@@ -987,8 +1002,29 @@
 
         document.getElementById("muscle-volume").innerText = newMuscleVolume + " cm³";
         document.getElementById("pcsa").innerText = newPCSA + " cm²";
+
+
+        const mt = parseFloat(document.getElementById("muscle-thickness").value.replace(/[^\d.]/g, ""));
+        const pa = parseFloat(document.getElementById("pennation-angle").value.replace(/[^\d.]/g, ""));
+        const fl = parseFloat(document.getElementById("fascicle-length").value.replace(/[^\d.]/g, ""));
+        const mv = parseFloat(document.getElementById("muscle-volume").value.replace(/[^\d.]/g, ""));
+
+        function setStatus(id, value, min, max) {
+            const elem = document.getElementById(id);
+            if (value >= min && value <= max) {
+                elem.style.color = "#69995D";
+            } else {
+                elem.style.color = "#DB5461";
+            }
+        }
+
+        setStatus("mt-status", mt, 1.71, 2.73);
+        setStatus("pa-status", pa, 17.9, 25.1);
+        setStatus("fl-status", fl, 4.64, 7.96);
+        setStatus("mv-status", mv, 115, 236);
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     fetch("static/metrics.json")
