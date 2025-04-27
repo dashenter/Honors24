@@ -794,3 +794,75 @@ nav:hover {
     margin: 5px;
     padding: 5px;
 }
+
+.range-bar {
+    width: 160px;
+    height: 10px;
+    background-color: #ddd; /* Full range */
+    border-radius: 10px;
+    position: relative;
+    margin-top: 8px;
+}
+
+.range-bar .normal-range {
+    position: absolute;
+    height: 100%;
+    background-color: #69995D;
+    border-radius: 10px;
+    top: 0;
+}
+
+.range-bar .marker {
+    position: absolute;
+    top: 0px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #111; /* always black */
+    transition: left 0.3s ease;
+    z-index: 2;
+}
+
+
+.avg-line {
+    position: absolute;
+    top: -4px;
+    width: 2px;
+    height: 18px;
+    background-color: black;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.range-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    font-size: 12px;
+    color: #666;
+}
+
+.marker-label {
+    padding-top: 5px;
+}
+
+
+/*.status-dot {*/
+/*    display: inline-block;*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*    border-radius: 50%;*/
+/*    background-color: #ccc; !* default grey *!*/
+/*    margin-right: 4px;*/
+/*}*/
+
+/*.status-dot.green {*/
+/*    background-color: #69995D;*/
+/*}*/
+
+/*.status-dot.red {*/
+/*    background-color: #DB5461;*/
+/*}*/
+
+

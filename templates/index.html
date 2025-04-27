@@ -172,6 +172,10 @@
 
                     <div class="stats">
                         <h3 style="color: #2d82b6;">Scan Stats</h3>
+                        <p style="font-style: italic; font-size: 13px; color: #666; margin-bottom: 12px;">
+                            Note: The values for each health marker are presented as a dot, while the average value is a vertical line. The values for the corresponding metrics in the accepted region are highlighted in green.
+                        </p>
+
                         <div style="display: flex;">
                             <div>
                                 <table style="width: 380px; color: #444444;">
@@ -203,145 +207,210 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative; ">
-                                            Fascicle Length
-                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
-                                                <span id="fl-status">⬤</span>
-                                            </div>
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                The length of the muscle fascicle measured during the scan.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option id="fascicle-length">12.7 cm</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Pennation Angle
-                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
-                                                <span id="pa-status">⬤</span>
-                                            </div>
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                The angle between muscle fibers and the force-generating axis.
+                                        <td style="vertical-align: top;">
+                                            <div style="margin-top: -3px;">
+                                                Fascicle Length
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                   onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                                <div class="custom-tooltip">
+                                                    The length of the muscle fascicle measured during the scan.
+                                                </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option id="pennation-angle">19.9°</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Muscle Thickness
-                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
-                                                <span id="mt-status">⬤</span>
-                                            </div>
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                The thickness of the muscle measured at its midpoint.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option id="muscle-thickness">1.15 cm</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Muscle Volume
-                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
-                                                <span id="mv-status">⬤</span>
-                                            </div>
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                The total volume of the muscle measured during the scan.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option id="muscle-volume">19.70 cm³</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            PCSA
-                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">
-                                                <span id="pcsa-status">⬤</span>
-                                            </div>
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
 
-                                                Physiological Cross-Sectional Area (PCSA) is the total cross-sectional area of the muscle fibers perpendicular to their length.</div>
-                                            
-                                        </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option id="pcsa">1.55 cm²</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
+                                      <td>
+                                        <select class="dropdown">
+                                          <option id="fascicle-length">12.7 cm</option>
+                                          <option>Enter Measurement</option>
+                                        </select>
+                                        <div class="range-container">
+                                          <span>0</span>
+                                          <div class="range-bar" id="fl-bar">
+                                            <div class="normal-range" id="fl-normal"></div>
+                                            <div class="avg-line" id="fl-avg"></div>
+                                            <div class="marker" id="fl-marker"></div>
+                                          </div>
+                                          <span>15</span>
+                                        </div>
+                                      </td>
                                     </tr>
+
+
+
+
+
+
+<!--                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative; ">-->
+<!--                                            Fascicle Length-->
+<!--                                            <div style="flex-grow: 1; display: flex; justify-content: flex-end;">-->
+<!--                                                <span id="fl-status">⬤</span>-->
+<!--                                            </div>-->
+<!--                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>-->
+<!--                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">-->
+<!--                                                The length of the muscle fascicle measured during the scan.-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <form>-->
+<!--                                                <select class="dropdown">-->
+<!--                                                    <option id="fascicle-length">12.7 cm</option>-->
+<!--                                                    <option>Enter Measurement</option>-->
+<!--                                                </select>-->
+<!--                                            </form>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
                                     <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Fascicle CSA
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                Fascicle Cross-Sectional Area (CSA) measures the cross-sectional area of a muscle fascicle, often related to muscle strength.
+                                        <td style="vertical-align: top;">
+                                            <div style="margin-top: -3px;">
+                                                Pennation Angle
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                               onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                                <div class="custom-tooltip">The angle between muscle fibers and the force-generating axis.</div>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option>1.22 cm²</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
+                                            <select class="dropdown">
+                                                <option id="pennation-angle">19.9°</option>
+                                                <option>Enter Measurement</option>
+                                            </select>
+                                            <div class="range-container">
+                                                <span>10</span>
+                                                <div class="range-bar" id="pa-bar">
+                                                    <div class="normal-range" id="pa-normal"></div>
+                                                    <div class="avg-line" id="pa-avg"></div>
+                                                    <div class="marker" id="pa-marker"></div>
+                                                </div>
+                                                <span>30</span>
+                                            </div>
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Force Transmission
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                Force Transmission indicates the efficiency of force transfer from muscle fibers to the tendon during contraction.
+                                        <td style="vertical-align: top;">
+                                            <div style="margin-top: -3px;">
+                                                Muscle Thickness
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                               onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                                <div class="custom-tooltip">The thickness of the muscle measured at its midpoint.</div>
+                                                </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option>0.942</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
+                                            <select class="dropdown">
+                                                <option id="muscle-thickness">1.15 cm</option>
+                                                <option>Enter Measurement</option>
+                                            </select>
+                                            <div class="range-container">
+                                                <span>0</span>
+                                                <div class="range-bar" id="mt-bar">
+                                                    <div class="normal-range" id="mt-normal"></div>
+                                                    <div class="avg-line" id="mt-avg"></div>
+                                                    <div class="marker" id="mt-marker"></div>
+                                                </div>
+                                                <span>5</span>
+                                            </div>
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+                                        <td style="vertical-align: top;">
+                                            <div style="margin-top: -3px;">
+                                                Muscle Volume
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                               onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                                <div class="custom-tooltip">The total volume of the muscle measured during the scan.</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select class="dropdown">
+                                                <option id="muscle-volume">146.6 cm³</option>
+                                                <option>Enter Measurement</option>
+                                            </select>
+                                            <div class="range-container">
+                                                <span>100</span>
+                                                <div class="range-bar" id="mv-bar">
+                                                    <div class="normal-range" id="mv-normal"></div>
+                                                    <div class="avg-line" id="mv-avg"></div>
+                                                    <div class="marker" id="mv-marker"></div>
+                                                </div>
+                                                <span>400</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="vertical-align: top;">
+                                            <div style="margin-top: -3px;">
+                                                PCSA
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                               onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                                <div class="custom-tooltip">Physiological Cross-Sectional Area of the muscle.</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select class="dropdown">
+                                                <option id="pcsa">10.85 cm²</option>
+                                                <option>Enter Measurement</option>
+                                            </select>
+                                            <div class="range-container">
+                                                <span>0</span>
+                                                <div class="range-bar" id="pcsa-bar">
+                                                    <div class="normal-range" id="pcsa-normal"></div>
+                                                    <div class="avg-line" id="pcsa-avg"></div>
+                                                    <div class="marker" id="pcsa-marker"></div>
+                                                </div>
+                                                <span>60</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">-->
+<!--                                            Fascicle CSA-->
+<!--                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>-->
+<!--                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">-->
+<!--                                                Fascicle Cross-Sectional Area (CSA) measures the cross-sectional area of a muscle fascicle, often related to muscle strength.-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <form>-->
+<!--                                                <select class="dropdown">-->
+<!--                                                    <option>1.22 cm²</option>-->
+<!--                                                    <option>Enter Measurement</option>-->
+<!--                                                </select>-->
+<!--                                            </form>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">-->
+<!--                                            Force Transmission-->
+<!--                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>-->
+<!--                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">-->
+<!--                                                Force Transmission indicates the efficiency of force transfer from muscle fibers to the tendon during contraction.-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <form>-->
+<!--                                                <select class="dropdown">-->
+<!--                                                    <option>0.942</option>-->
+<!--                                                    <option>Enter Measurement</option>-->
+<!--                                                </select>-->
+<!--                                            </form>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+                                    <tr>
+                                        <td style="display: flex; align-items: center; position: relative; justify-content: space-between;">
                                             Muscle Force
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
+                                            <div style="display: flex; align-items: center;">
+                                                <span id="mf-status" style="margin-left: 8px;">⬤</span>
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                   onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
+                                            </div>
+                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333;
+                                                 color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px;
+                                                 white-space: nowrap; z-index: 10;">
                                                 Muscle Force represents the total force generated by the muscle during contraction.
                                             </div>
                                         </td>
@@ -354,23 +423,24 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-                                            Muscle Efficiency
-                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">
-                                                Muscle Efficiency measures how effectively the muscle converts energy into mechanical work.
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form>
-                                                <select class="dropdown">
-                                                    <option>0.942</option>
-                                                    <option>Enter Measurement</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
+
+<!--                                    <tr>-->
+<!--                                        <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">-->
+<!--                                            Muscle Efficiency-->
+<!--                                            <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>-->
+<!--                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333; color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px; white-space: nowrap; z-index: 10;">-->
+<!--                                                Muscle Efficiency measures how effectively the muscle converts energy into mechanical work.-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <form>-->
+<!--                                                <select class="dropdown">-->
+<!--                                                    <option>0.942</option>-->
+<!--                                                    <option>Enter Measurement</option>-->
+<!--                                                </select>-->
+<!--                                            </form>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
 
                                     <!-- <tr>
                                         <td style="display: flex; justify-content: space-between; align-items: center; position: relative;">
@@ -1014,20 +1084,49 @@
         const mv = parseFloat(document.getElementById("muscle-volume").value.replace(/[^\d.]/g, ""));
         const pcsa = parseFloat(document.getElementById("pcsa").value.replace(/[^\d.]/g, ""));
 
-        function setStatus(id, value, min, max) {
-            const elem = document.getElementById(id);
-            if (value >= min && value <= max) {
-                elem.style.color = "#69995D";
-            } else {
-                elem.style.color = "#DB5461";
-            }
+        // function setStatus(id, value, min, max) {
+        //     const elem = document.getElementById(id);
+        //     if (value >= min && value <= max) {
+        //         elem.style.color = "#69995D";
+        //     } else {
+        //         elem.style.color = "#DB5461";
+        //     }
+        // }
+
+        function setRangeBar(barId, value, min, max, scaleMin, scaleMax, average) {
+            const bar = document.getElementById(`${barId}-bar`);
+            const marker = document.getElementById(`${barId}-marker`);
+            const normal = document.getElementById(`${barId}-normal`);
+            const avgLine = document.getElementById(`${barId}-avg`);
+
+            if (!bar || !marker || !normal || !avgLine) return;
+
+            const valuePct = ((value - scaleMin) / (scaleMax - scaleMin)) * 100;
+            const minPct = ((min - scaleMin) / (scaleMax - scaleMin)) * 100;
+            const maxPct = ((max - scaleMin) / (scaleMax - scaleMin)) * 100;
+            const avgPct = ((average - scaleMin) / (scaleMax - scaleMin)) * 100;
+
+            marker.style.left = `calc(${Math.max(0, Math.min(100, valuePct))}% - 6px)`;
+            normal.style.left = `${minPct}%`;
+            normal.style.width = `${maxPct - minPct}%`;
+            avgLine.style.left = `calc(${Math.max(0, Math.min(100, avgPct))}% - 1px)`; // -1px to center the 2px line
         }
 
-        setStatus("mt-status", mt, 1.71, 2.73);
-        setStatus("pa-status", pa, 17.9, 25.1);
-        setStatus("fl-status", fl, 4.64, 7.96);
-        setStatus("mv-status", mv, 115, 236);
-        setStatus("pcsa-status", pcsa, 31.7, 50.9);
+
+
+
+        // setStatus("fl", fl, 4.64, 7.96);
+        // setStatus("pa", pa, 17.9, 25.1);
+        // setStatus("mt", mt, 1.71, 2.73);
+        // setStatus("mv", mv, 115, 236);
+        // setStatus("pcsa", pcsa, 31.7, 50.9);
+
+        setRangeBar("fl", fl, 4.64, 7.96, 0, 15, 6.3); //
+        setRangeBar("pa", pa, 17.9, 25.1, 10, 30, 21.5);
+        setRangeBar("mt", mt, 1.71, 2.73, 0, 5, 2.2);
+        setRangeBar("mv", mv, 199, 338, 100, 400, 268.5); //
+        setRangeBar("pcsa", pcsa, 31.7, 50.9, 0, 60, 41.3);
+
     });
 });
 
@@ -1044,6 +1143,46 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error loading metrics:", error));
 });
     </script>
+
+<script>
+function checkMarkerHealthAfterCalculate() {
+    function checkMarkerHealth(id, min, max) {
+        const elem = document.getElementById(id);
+        const tdElem = elem.closest('td').previousElementSibling;
+
+        if (!elem || !tdElem) return;
+
+        const num = parseFloat(elem.innerText.replace(/[^0-9.]/g, ""));
+
+        if (isNaN(num)) return;
+
+        if (num < min || num > max) {
+            tdElem.style.color = "#DB5461"; // RED
+        } else {
+            tdElem.style.color = ""; // Default color
+        }
+    }
+
+    // Now check after calculation
+    checkMarkerHealth("fascicle-length", 4.64, 7.96);
+    checkMarkerHealth("pennation-angle", 17.9, 25.1);
+    checkMarkerHealth("muscle-thickness", 1.71, 2.73);
+    checkMarkerHealth("muscle-volume", 199, 338);
+    checkMarkerHealth("pcsa", 31.7, 50.9);
+}
+
+// Attach it to the Calculate button
+document.addEventListener("DOMContentLoaded", function () {
+    const calcButton = document.getElementById("calculate-btn");
+    if (calcButton) {
+        calcButton.addEventListener("click", function () {
+            setTimeout(checkMarkerHealthAfterCalculate, 100);
+            // Small timeout to let the updated numbers appear first
+        });
+    }
+});
+</script>
+
 
 </body>
 </html>

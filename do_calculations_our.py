@@ -170,14 +170,14 @@ def annotate_frame(frame, annotations, position=(50, 50), font_scale=1, color=(2
 # At first, I tried dowloading https://ffmpeg.org/download.html, but there was no 'bin' directory, so I had to download the file mentioned above.
 # Try downloading either one of those and locate the 'bin' directory.
 def convert_avi_to_mp4(avi_path, mp4_path):
-    ffmpeg_path = r"/Users/liischmidt/Documents/GitHub/Honors24/ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
+    ffmpeg_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
     command = [ffmpeg_path, '-i', avi_path, '-vcodec', 'libx264', '-acodec', 'aac', mp4_path]
     subprocess.run(command, check=True)
 
 # Even after converting the videos into the MP4 format, they use the MP4 codec. It is necessary to have the AVC1 codec so the conversion is done in the snippet below.
 # Insert the same path to the ffmpeg.exe file as the one above
 def reencode_to_avc1(mp4_path, reencoded_mp4_path):
-    ffmpeg_path = r"/Users/liischmidt/Documents/GitHub/Honors24/ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
+    ffmpeg_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\ffmpeg.exe"  # Update this path to the actual path of ffmpeg.exe
     command = [ffmpeg_path, '-i', mp4_path, '-vcodec', 'libx264', '-acodec', 'aac', reencoded_mp4_path]
     subprocess.run(command, check=True)
 
@@ -220,13 +220,7 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
     if not cap.isOpened():
         print("Error: Cannot open video.")
         return
-    if not os.path.exists(bar_graph_video_path) or os.path.getsize(bar_graph_video_path) == 0:
-        print(f"Error: {bar_graph_video_path} is empty or does not exist!")
-        return
 
-    if not os.path.exists(line_graph_video_path) or os.path.getsize(line_graph_video_path) == 0:
-        print(f"Error: {line_graph_video_path} is empty or does not exist!")
-        return
 
     # Extracting Video Properties
     vid_len = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -354,12 +348,12 @@ def doCalculationsVideo(input_video_path, output_video_path, bar_graph_video_pat
 # Define file paths and parameters
 # Feel free to change them according to your layout.
 # If you are changing one of the output paths, make sure to have them located in the static folder!
-input_video_path = r"/Users/liischmidt/Documents/GitHub/Honors24/static/calf_raise.mp4"  #Path to the US video you want to analyze
-output_video_path = r"/Users/liischmidt/Documents/GitHub/Honors24/static/calf_raise.mp4" #Path to the analyzed output video.
-bar_graph_video_path = r"static/UM01_calfraise_1_VSCAN.mp4" #Path to the created bar graph.
-line_graph_video_path = r"static/UM01_calfraise_1_VSCAN.mp4" #Path to the created line graph.
-apo_model_path = r"/Users/liischmidt/Downloads/model-apo-VGG16-BCE-512.h5" #Path to the model.
-fasc_model_path = r"/Users/liischmidt/Downloads/model-fasc-VGG16-BCE-512.h5" #Path to the model.
+input_video_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\static\calf_raise.mp4"  #Path to the US video you want to analyze
+output_video_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\static\output_video.mp4" #Path to the analyzed output video.
+bar_graph_video_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\static\bar_graph_video.mp4" #Path to the created bar graph.
+line_graph_video_path = r"C:\Users\HP\Downloads\Honors Y2\Honors24\static\line_graph_video.mp4" #Path to the created line graph.
+apo_model_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\DL_Track_US_example\DL_Track_US_example\DL_Track_US_models\model-apo-VGG16-BCE-512.h5"  # Path to the model.
+fasc_model_path = r"C:\Users\HP\OneDrive - TU Eindhoven\Desktop\Honors Midterm\DL_Track_US_example\DL_Track_US_example\DL_Track_US_models\model-fasc-VGG16-BCE-512.h5"  # Path to the model
 
 
 # Based on different ultrasound videos, the parameters can be adjusted.
