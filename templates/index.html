@@ -172,8 +172,8 @@
 
                     <div class="stats">
                         <h3 style="color: #2d82b6;">Scan Stats</h3>
-                        <p style="font-style: italic; font-size: 13px; color: #666; margin-bottom: 12px;">
-                            Note: The values for each health marker are presented as a dot, while the average value is a vertical line. The values for the corresponding metrics in the accepted region are highlighted in green.
+                        <p style="font-style: italic; font-size: 13px; color: #9E9E9E; margin-bottom: 12px;">
+                            The values for each health marker are presented as a dot, while the average value is a vertical line. The values for the corresponding metrics in the accepted region are highlighted in green.
                         </p>
 
                         <div style="display: flex;">
@@ -183,7 +183,7 @@
                                         <td>Position</td>
                                         <td>
                                             <form>
-                                                <select class="dropdown">
+                                                <select class="dropdown" style="margin-top: 10px;">
                                                   <option>Left Calf</option>
                                                   <option>Right Calf</option>
                                                   <option>Left Thigh</option>
@@ -196,7 +196,7 @@
                                         <td>Muscle</td>
                                         <td>
                                             <form>
-                                                <select class="dropdown">
+                                                <select class="dropdown" style="margin-top: 10px;">
                                                   <option>Gastrocnemius medialis</option>
                                                   <option>Gastrocnemius lateralis</option>
                                                   <option>Vastus lateralis</option>
@@ -208,18 +208,18 @@
                                     </tr>
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <div style="margin-top: -3px;">
+                                            <div style="margin-top: 8px;">
                                                 Fascicle Length
-                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 27px;"
                                                    onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                                <div class="custom-tooltip">
+                                                <div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">
                                                     The length of the muscle fascicle measured during the scan.
                                                 </div>
                                             </div>
                                         </td>
 
                                       <td>
-                                        <select class="dropdown">
+                                        <select class="dropdown" style="margin-top: 10px;">
                                           <option id="fascicle-length">12.7 cm</option>
                                           <option>Enter Measurement</option>
                                         </select>
@@ -261,16 +261,16 @@
 <!--                                    </tr>-->
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <div style="margin-top: -3px;">
+                                            <div style="margin-top: 8px;">
                                                 Pennation Angle
-                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 20px; align-items: right;"
                                                onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                                <div class="custom-tooltip">The angle between muscle fibers and the force-generating axis.</div>
+                                                <div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">The angle between muscle fibers and the force-generating axis.</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="dropdown">
+                                            <select class="dropdown" style="margin-top: 10px;">
                                                 <option id="pennation-angle">19.9°</option>
                                                 <option>Enter Measurement</option>
                                             </select>
@@ -288,16 +288,16 @@
 
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <div style="margin-top: -3px;">
+                                            <div style="margin-top: 8px;">
                                                 Muscle Thickness
-                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 14px;"
                                                onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                                <div class="custom-tooltip">The thickness of the muscle measured at its midpoint.</div>
+                                                <div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">The thickness of the muscle measured at its midpoint.</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="dropdown">
+                                            <select class="dropdown" style="margin-top: 10px;">
                                                 <option id="muscle-thickness">1.15 cm</option>
                                                 <option>Enter Measurement</option>
                                             </select>
@@ -315,16 +315,16 @@
 
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <div style="margin-top: -3px;">
+                                            <div style="margin-top: 8px;">
                                                 Muscle Volume
-                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 28px;"
                                                onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                                <div class="custom-tooltip">The total volume of the muscle measured during the scan.</div>
+                                                <div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">The total volume of the muscle measured during the scan.</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="dropdown">
+                                            <select class="dropdown" style="margin-top: 10px;">
                                                 <option id="muscle-volume">146.6 cm³</option>
                                                 <option>Enter Measurement</option>
                                             </select>
@@ -342,16 +342,16 @@
 
                                     <tr>
                                         <td style="vertical-align: top;">
-                                            <div style="margin-top: -3px;">
+                                            <div style="margin-top: 8px;">
                                                 PCSA
-                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
+                                                <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 94px;"
                                                onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                                <div class="custom-tooltip">Physiological Cross-Sectional Area of the muscle.</div>
+                                                <div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">Physiological Cross-Sectional Area of the muscle.</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="dropdown">
+                                            <select class="dropdown" style="margin-top: 10px;">
                                                 <option id="pcsa">10.85 cm²</option>
                                                 <option>Enter Measurement</option>
                                             </select>
@@ -401,22 +401,20 @@
 <!--                                        </td>-->
 <!--                                    </tr>-->
                                     <tr>
-                                        <td style="display: flex; align-items: center; position: relative; justify-content: space-between;">
+                                        <td style="display: flex; align-items: center; position: relative; justify-content: space-between; margin-top: 8px;">
                                             Muscle Force
                                             <div style="display: flex; align-items: center;">
                                                 <span id="mf-status" style="margin-left: 8px;">⬤</span>
                                                 <i class="fas fa-question-circle" style="color: #999999; cursor: pointer; margin-left: 5px;"
                                                    onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)"></i>
-                                            </div>
-                                            <div class="custom-tooltip" style="display: none; position: absolute; background-color: #333;
-                                                 color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 12px; top: 25px; left: -50px;
-                                                 white-space: nowrap; z-index: 10;">
+                                            <div div class="custom-tooltip" style="background-color: #fff; padding: 5px; color: #444444; border-radius: 50px;">
                                                 Muscle Force represents the total force generated by the muscle during contraction.
                                             </div>
+                                        </div>
                                         </td>
                                         <td>
                                             <form>
-                                                <select class="dropdown">
+                                                <select class="dropdown" style="margin-top: 10px;">
                                                     <option>46.5 N</option>
                                                     <option>Enter Measurement</option>
                                                 </select>
@@ -462,7 +460,7 @@
                             </div>
                             <img src="{{ url_for('static', filename='muscle.png') }}" style="height: 410px; margin-left: 13%; padding: 0px 20px;">
                         </div>
-                        <p class="data-2" style="text-align: left; margin-top: 10px;">NOTE: Visualize the target area before starting the scan. Use external markers or indicators to guide the placement of the transducer. Confirm the alignment visually and adjust as needed.</p>
+                        <p class="data-2" style="text-align: left; margin-top: 10px; font-size: 13px;">NOTE: Visualize the target area before starting the scan. Use external markers or indicators to guide the placement of the transducer. Confirm the alignment visually and adjust as needed.</p>
                         <div class="button-container" style="margin-top: 20px;">
                             <button class="toggle-button" style="box-shadow: 0px 1px 4px #D0D0D0;" onclick="pauseVideos()">Stop Scanning</button>
                             <script>
@@ -1186,5 +1184,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
-
 
