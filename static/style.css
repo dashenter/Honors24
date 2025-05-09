@@ -185,6 +185,7 @@ nav:hover {
     transition: 0.5s;
     box-shadow: 0px 1px 4px #D0D0D0;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .calculate-btn:hover{
@@ -770,12 +771,12 @@ nav:hover {
 .custom-tooltip {
     display: none;
     position: absolute;
-    background-color: #333;
-    color: white;
+    background-color: #fff;
     font-size: 12px;
     white-space: nowrap;
     z-index: 10;
     left: 10px; /* Adjust placement next to the question mark */
+    opacity: 0.9;
 }
 
 .custom-tooltip::after {
@@ -785,7 +786,8 @@ nav:hover {
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent #333 transparent transparent;
+    border-color: transparent #fff transparent transparent;
+    opacity: 0.9;
 }
 
 .fa-question-circle {
@@ -864,5 +866,4 @@ nav:hover {
 /*.status-dot.red {*/
 /*    background-color: #DB5461;*/
 /*}*/
-
 
